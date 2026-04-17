@@ -4,6 +4,8 @@
 
 - Defined user roles (TS, CS/Director, SVC) based on prior requirements documents
 
+- Clarified external data source policy for parts price and inventory
+
 ## 2026-04-16
 - Product Tags を削除
   理由: Category/SubCategory と役割重複のため
