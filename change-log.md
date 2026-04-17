@@ -9,4 +9,6 @@
 
 ## 2026-04-15
 - Product Category / Sub Category を taxonomy として導入
-``
+
+2026-04-17
+- Defined user roles (TS, CS/Director, SVC) based on prior requirements documents
