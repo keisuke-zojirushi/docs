@@ -394,4 +394,8 @@ Product Tags
 Used in Product taxonomy
 Product Attributes as taxonomy
 
+## UI Reference
+- Figma (Desktop): https://www.figma.com/...
+- Figma (Mobile): https://www.figma.com
+
 All such decisions are recorded in change-log.md.
