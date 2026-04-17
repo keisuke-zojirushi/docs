@@ -28,11 +28,11 @@ Fundamental architectural decisions are defined separately in design-principles.
 ## 2. Content Model Overview
 2.1 Core Entities
 
-# Product
+### Product
 Part
 Product–Part (relationship / usage)
 
-# Responsibilities are clearly separated:
+### Responsibilities are clearly separated:
 
 Product = classification, naming, search
 Part = pure part master
@@ -40,7 +40,7 @@ Product–Part = diagram position, size, usage context
 
 
 ## 3. Product Classification (Taxonomy)
-3.1 Product Categories
+### 3.1 Product Categories
 
 Implemented as taxonomy
 Taxonomy name: Product Categories
@@ -52,21 +52,21 @@ Navigation, filtering, listing
 
 
 
-# Examples
+### Examples
 
 Rice Cooker
 Water Boiler
 Thermos
 
 
-# 3.2 Product Sub Categories
+### 3.2 Product Sub Categories
 
 Implemented as taxonomy
 Taxonomy name: Product Sub Categories
 Assigned to: Products CPT
 Logical parent: Product Categories (operational rule)
 
-Examples
+#### Examples
 
 IH
 Micom
@@ -79,13 +79,13 @@ Product Tags are not used.
 
 
 ## 4. Product Attributes (ACF)
-4.1 Core Fields
+### 4.1 Core Fields
 
 Product Name
 Series / Model Name
 Remarks (optional)
 
-# 4.2 Optional Fields
+### 4.2 Optional Fields
 
 Size (only if meaningful at product level)
 Release Date (optional)
@@ -94,9 +94,9 @@ Discontinued Date (optional)
 Dates are informational only and do not affect structure or logic.
 
 ## 5. Product Alias (Search Normalization)
-# 5.1 Purpose
+### 5.1 Purpose
 Product Aliases are used to normalize search input and resolve naming variations.
-# 5.2 Implementation
+### 5.2 Implementation
 
 Implemented as ACF field on Product
 Field type:
@@ -106,13 +106,13 @@ Repeater or multi-text field
 
 Field name: product_aliases
 
-# 5.3 Usage Rules
+### 5.3 Usage Rules
 
 All aliases must resolve to one canonical Product
 Aliases are not visible as classification
 Aliases are for search and lookup purposes only
 
-# Examples
+#### Examples
 
 NW-QAC
 NWQAC
@@ -144,7 +144,7 @@ Global Notes
 The Product–Part relationship represents how a part is used in a product.
 Fields (not all implemented in Phase 1)
 
-# Product
+### Product
 Part
 Diagram No. (mandatory for diagram linkage)
 Size (nullable)
@@ -157,7 +157,7 @@ It is strictly defined per Product–Part relationship.
 
 
 ## 8. Development Phases
-# Phase 1 (Current Priority)
+### Phase 1 (Current Priority)
 
 Database & ACF structure
 Product taxonomy (Category / Sub Category)
@@ -165,13 +165,13 @@ Alias handling
 Product & Part data entry
 Basic UI and forms
 
-# Phase 2 (Add-on Features)
+### Phase 2 (Add-on Features)
 
 Resizable Split Pane
 Exploded View Zoom (in / out / reset)
 Diagram ↔ Parts List bi-directional highlighting
 
-# Phase 2 features must be implementable without database restructuring.
+### Phase 2 features must be implementable without database restructuring.
 
 ## 9. Explicit Exclusions
 The following are intentionally not used in this baseline:
