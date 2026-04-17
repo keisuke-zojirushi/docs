@@ -16,30 +16,30 @@ Last updated: 2026-04-16
 - Phase 1: DB / フォーム / 基本UI
 - Phase 2: Split Pane / Zoom / 図面×リスト連動
   
-Baseline Spec
+## Baseline Spec
 ZAC SVC Site
 Last updated: 2026-04-17
 
-1. Scope
+## 1. Scope
 This document defines the current agreed baseline for the ZAC SVC site.
 This baseline may evolve, but all changes must be recorded in change-log.md.
 Fundamental architectural decisions are defined separately in design-principles.md.
 
-2. Content Model Overview
+## 2. Content Model Overview
 2.1 Core Entities
 
-Product
+## Product
 Part
 Product–Part (relationship / usage)
 
-Responsibilities are clearly separated:
+## Responsibilities are clearly separated:
 
 Product = classification, naming, search
 Part = pure part master
 Product–Part = diagram position, size, usage context
 
 
-3. Product Classification (Taxonomy)
+## 3. Product Classification (Taxonomy)
 3.1 Product Categories
 
 Implemented as taxonomy
@@ -52,14 +52,14 @@ Navigation, filtering, listing
 
 
 
-Examples
+## Examples
 
 Rice Cooker
 Water Boiler
 Thermos
 
 
-3.2 Product Sub Categories
+## 3.2 Product Sub Categories
 
 Implemented as taxonomy
 Taxonomy name: Product Sub Categories
@@ -78,7 +78,7 @@ Category/Sub Category are the only official classification axes.
 Product Tags are not used.
 
 
-4. Product Attributes (ACF)
+## 4. Product Attributes (ACF)
 4.1 Core Fields
 
 Product Name
@@ -93,7 +93,7 @@ Discontinued Date (optional)
 
 Dates are informational only and do not affect structure or logic.
 
-5. Product Alias (Search Normalization)
+## 5. Product Alias (Search Normalization)
 5.1 Purpose
 Product Aliases are used to normalize search input and resolve naming variations.
 5.2 Implementation
@@ -120,7 +120,7 @@ NW-QAC10
 NW-QAC18
 
 
-6. Part Model (Reference)
+## 6. Part Model (Reference)
 
 Parts do not contain:
 
@@ -140,7 +140,7 @@ Global Notes
 
 
 
-7. Product–Part Relationship (Preparation for Phase 2)
+## 7. Product–Part Relationship (Preparation for Phase 2)
 The Product–Part relationship represents how a part is used in a product.
 Fields (not all implemented in Phase 1)
 
@@ -156,7 +156,7 @@ Diagram No. is not a part attribute.
 It is strictly defined per Product–Part relationship.
 
 
-8. Development Phases
+## 8. Development Phases
 Phase 1 (Current Priority)
 
 Database & ACF structure
@@ -173,7 +173,7 @@ Diagram ↔ Parts List bi-directional highlighting
 
 Phase 2 features must be implementable without database restructuring.
 
-9. Explicit Exclusions
+## 9. Explicit Exclusions
 The following are intentionally not used in this baseline:
 
 Product Tags
