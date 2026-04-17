@@ -16,7 +16,7 @@ Last updated: 2026-04-16
 - Phase 1: DB / フォーム / 基本UI
 - Phase 2: Split Pane / Zoom / 図面×リスト連動
   
-## Baseline Spec
+# Baseline Spec
 ZAC SVC Site
 Last updated: 2026-04-17
 
