@@ -99,7 +99,11 @@ Attributes:
 Relationships:
 - One Part can be associated with multiple Products
 ``
-
+### Data Ownership Notes
+- Price and inventory data are not manually managed within WordPress
+- These values are imported from external data sources
+- WordPress serves as a display and reference layer, not as the system of record
+``
 ## 2. Content Model Overview
 2.1 Core Entities
 
