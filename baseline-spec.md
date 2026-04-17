@@ -127,7 +127,9 @@ and treated as external reference data.
 ### Future Considerations
 - API-based integration may replace the current file-based method
 - The data model and site behavior must remain independent of the integration method
-``
+
+### Define external data source policy for price and inventory
+
 ## 2. Content Model Overview
 2.1 Core Entities
 
