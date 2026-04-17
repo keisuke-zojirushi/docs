@@ -130,6 +130,58 @@ and treated as external reference data.
 
 ### Define external data source policy for price and inventory
 
+## Page Types
+
+The ZAC SVC site is composed of predefined page types.
+Each page type defines its role and responsibility independent of layout or design.
+
+### Top Page
+- Entry point after login
+- Provides access to major functions and categories
+- May include announcements or notices for users
+
+### Category Page
+- Displays a list of products within a selected category
+- Supports category and sub-category navigation
+- Acts as an entry point to individual product pages
+
+### Product / Model Page
+- Represents a single product or model
+- Displays:
+  - Product information
+  - Diagrams
+  - Parts list
+  - Related manuals and documents
+- Serves as the main reference page for service activities
+
+### Parts Search Page
+- Dedicated search page for parts lookup
+- Supports search by:
+  - Model number
+  - Part number
+  - Part name
+- Search results link to related product or part information
+
+### Form Pages
+Includes pages designed specifically for data submission.
+
+#### Parts Order
+- Used to submit parts order requests
+- Accessible only to logged-in users
+- Sends submission data to TS members for processing
+
+#### Warranty Claim
+- Used to submit warranty claim requests
+- Supports document and image attachments
+- Sends submission data to TS members for processing
+
+### Static Pages
+- Informational pages such as:
+  - Contact
+  - Terms & Conditions
+  - Privacy Policy
+- Content is managed by TS users
+
 ## 2. Content Model Overview
 2.1 Core Entities
 
