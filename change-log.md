@@ -1,4 +1,6 @@
 # Change Log
+## 2026-04-17
+- Defined core data model (Product / Part) based on prior requirements documents
 
 ## 2026-04-17
 - Defined user roles (TS, CS/Director, SVC) based on prior requirements documents
