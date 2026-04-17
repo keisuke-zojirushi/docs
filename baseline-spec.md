@@ -103,6 +103,30 @@ Relationships:
 - Price and inventory data are not manually managed within WordPress
 - These values are imported from external data sources
 - WordPress serves as a display and reference layer, not as the system of record
+
+``
+## External Data Source
+
+Price and inventory information are managed outside of WordPress
+and treated as external reference data.
+
+### Scope
+- Parts price and inventory quantity are not manually maintained in WordPress
+- WordPress serves as a display and lookup layer only
+- External systems remain the single source of truth
+
+### Data Items
+- Parts Price
+- Inventory Quantity
+
+### Current Operation
+- Data is extracted from shared internal data sources
+- Scheduled file-based import is used to update WordPress
+- Manual editing of price or inventory in WordPress is not allowed
+
+### Future Considerations
+- API-based integration may replace the current file-based method
+- The data model and site behavior must remain independent of the integration method
 ``
 ## 2. Content Model Overview
 2.1 Core Entities
