@@ -130,6 +130,7 @@ and treated as external reference data.
 
 ### Define external data source policy for price and inventory
 
+
 ## Page Types
 
 The ZAC SVC site is composed of predefined page types.
@@ -181,6 +182,8 @@ Includes pages designed specifically for data submission.
   - Terms & Conditions
   - Privacy Policy
 - Content is managed by TS users
+
+####   Define core page types and responsibilities
 
 ## 2. Content Model Overview
 2.1 Core Entities
