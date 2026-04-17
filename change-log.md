@@ -6,6 +6,8 @@
 
 - Clarified external data source policy for parts price and inventory
 
+- Defined core page types for ZAC SVC site
+
 ## 2026-04-16
 - Product Tags を削除
   理由: Category/SubCategory と役割重複のため
