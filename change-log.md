@@ -8,6 +8,8 @@
 
 - Defined core page types for ZAC SVC site
 
+- Defined clear separation policy for ACF and taxonomy usage
+
 ## 2026-04-16
 - Product Tags を削除
   理由: Category/SubCategory と役割重複のため
