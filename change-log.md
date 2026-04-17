@@ -10,6 +10,8 @@
 
 - Defined clear separation policy for ACF and taxonomy usage
 
+- Add Project Status on  project-status.md
+
 ## 2026-04-16
 - Product Tags を削除
   理由: Category/SubCategory と役割重複のため
