@@ -1,4 +1,6 @@
 # Baseline Spec (2026-04)
+Last updated: 2026-04-16
+
 
 ## Taxonomy
 - Product Categories
@@ -13,6 +15,4 @@
 ## Development Phases
 - Phase 1: DB / フォーム / 基本UI
 - Phase 2: Split Pane / Zoom / 図面×リスト連動
-- 
-# Baseline Spec
-Last updated: 2026-04-16
+  
