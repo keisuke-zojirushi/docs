@@ -185,6 +185,60 @@ Includes pages designed specifically for data submission.
 
 ####   Define core page types and responsibilities
 
+## ACF and Taxonomy Policy
+
+Advanced Custom Fields (ACF) and Taxonomy are used with clearly separated roles.
+They must not overlap in responsibility.
+
+### ACF (Advanced Custom Fields)
+
+ACF is used to manage structured attribute data for Product and Part entities.
+
+Principles:
+- ACF fields represent intrinsic properties of an entity
+- Field values are treated as data, not classification
+- ACF is used for:
+  - Identifiers
+  - Descriptive attributes
+  - Reference values displayed on pages
+
+Examples:
+- Model Number
+- Part Number
+- Color
+- Japanese Part Number
+- Size
+- Release / Discontinued Date
+- Notes
+
+ACF must not be used for:
+- Category or filtering logic
+- Cross-entity grouping
+- Search classification
+
+### Taxonomy
+
+Taxonomy is used to manage classification, grouping, and filtering.
+
+Principles:
+- Taxonomies represent how content is organized or searched
+- Taxonomy terms are shared and reusable
+- Taxonomy is used for:
+  - Category
+  - Sub-category
+  - Tags
+  - Product attributes used for filtering
+
+Examples:
+- Product Category
+- Product Sub-category
+- Attribute Tags (e.g. heater type, control type)
+
+Taxonomy must not be used for:
+- Storing descriptive values
+- Managing numeric or external data
+``
+
 ## 2. Content Model Overview
 2.1 Core Entities
 
