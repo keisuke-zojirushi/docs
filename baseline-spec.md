@@ -58,6 +58,48 @@ User access and capabilities are defined as follows.
 - Detailed permission mapping is handled at implementation level
 - No anonymous (non-logged-in) access is allowed
 
+- ## Data Model
+
+The ZAC SVC site manages two primary data entities: Product and Part.
+These data models define the minimum required attributes regardless of implementation details.
+
+### Product (Model)
+
+Represents a serviceable product or model.
+
+Attributes:
+- Model Number
+- Product Name
+- Category
+- Sub-category
+- Size
+- Release Date
+- Discontinued Date
+- Tags
+- Notes
+
+Relationships:
+- One Product can be associated with multiple Parts
+- One Product can have multiple related documents (manuals, diagrams, parts list PDFs)
+
+### Part
+
+Represents a service part associated with a product.
+
+Attributes:
+- Part Number
+- Part Name
+- Color
+- Original (Japan) Part Number
+- Product Attributes (tag-based, multiple allowed)
+- Notes (e.g. revised or improved parts)
+- Price (external data source)
+- Inventory Quantity (external data source)
+
+Relationships:
+- One Part can be associated with multiple Products
+``
+
 ## 2. Content Model Overview
 2.1 Core Entities
 
