@@ -25,6 +25,39 @@ This document defines the current agreed baseline for the ZAC SVC site.
 This baseline may evolve, but all changes must be recorded in change-log.md.
 Fundamental architectural decisions are defined separately in design-principles.md.
 
+## User Roles
+
+The ZAC SVC site is a closed, login-based WordPress site intended for internal and partner use.
+User access and capabilities are defined as follows.
+
+### TS (Technical Support)
+- Primary operators of the site
+- Can create, edit, and manage content and data
+- Responsible for:
+  - Parts and product information
+  - Manuals and diagrams
+  - Data imports and maintenance
+- Acts as the main content editor role within WordPress
+
+### CS / Director
+- Read-only users
+- Can view all published content and data
+- Cannot edit or modify site data
+- Intended for reference, confirmation, and management oversight
+
+### SVC (Service Centers)
+- External partner users
+- Read-only access limited to:
+  - Parts search
+  - Diagrams
+  - Manuals
+- Cannot edit content or access administrative functions
+
+### Notes
+- User roles are implemented based on WordPress roles and/or custom roles
+- Detailed permission mapping is handled at implementation level
+- No anonymous (non-logged-in) access is allowed
+
 ## 2. Content Model Overview
 2.1 Core Entities
 
