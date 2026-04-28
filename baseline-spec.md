@@ -279,12 +279,12 @@ Implemented as taxonomy
 Taxonomy name: Product Sub Categories
 Assigned to: Products CPT
 Logical parent: Product Categories (operational rule)
-
+For Rice Cookers, sub-categories are defined based on heating and control methods to support serviceability and troubleshooting clarity.
 #### Examples
-
-IH
-Micom
-Commercial
+• Pressure + IH + Micom
+• IH + Micom
+• Micom
+• Conventional
 
 
 Note:
