@@ -331,7 +331,19 @@ Examples:
 - NW-QAC10/18        -> nw_qac
 
 Normalized Keys are not exposed in the UI.
-``
+
+### Capacity vs Specification Handling
+
+Capacity differences (e.g. 06 / 10 / 18) are handled within a single Product
+and resolved through Model Alias search variations.
+
+Specification differences that affect structure or service behavior
+(e.g. A-suffix models) are implemented as separate Products.
+
+Summary:
+- Capacity variation -> Alias only (single Product)
+- Specification variation (A, B, etc.) -> Separate Product
+
 
 ## 4. Product Attributes (ACF)
 ### 4.1 Core Fields
