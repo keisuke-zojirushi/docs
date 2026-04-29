@@ -313,6 +313,25 @@ Each Model Alias defines:
 
 Model Alias is not exposed as a taxonomy and is not used for navigation.
 
+### Normalized Key Policy
+
+The Normalized Key represents a series-level identifier and is used internally
+for search resolution and model grouping logic.
+
+Rules:
+- Normalized Key MUST represent the base series
+- Capacity numbers are NOT included in the key
+- Specification suffixes (e.g. A) are included only when they represent
+  a distinct product variant
+
+Examples:
+- NS-TSC10/18        -> ns_tsc
+- NS-TSC10A/18A      -> ns_tsc_a
+- NHS-06/10/18       -> nhs
+- NW-QAC10/18        -> nw_qac
+
+Normalized Keys are not exposed in the UI.
+``
 
 ## 4. Product Attributes (ACF)
 ### 4.1 Core Fields
