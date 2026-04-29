@@ -8,4 +8,4 @@
 - UI 付加機能（Split Pane / Zoom / 図面連動）は
   DB 完成後でも追加できる設計にする
 - 検索正規化は Model Alias に集約する
-``
+
