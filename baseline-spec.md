@@ -466,4 +466,29 @@ Product Attributes as taxonomy
 - Figma (Desktop): https://www.figma.com/...
 - Figma (Mobile): https://www.figma.com
 
+- ## UI Design Reference
+
+All primary page designs for the ZAC SVC Site have been completed in Figma.
+The Figma mockups represent the final design intent and visual reference.
+
+These mockups include:
+- Landing Page
+- List / Search Result Pages
+- Product Detail Pages
+- Global header and shared sidebar navigation
+
+During Phase 1 implementation, layouts may be simplified for functional validation.
+Phase 2 implementation must conform to the finalized Figma designs.
+``
+## Theme & Implementation Policy
+
+The ZAC SVC Site is implemented using the WordPress **Twenty Twenty-Five** theme
+as the base template.
+
+Implementation principles:
+- Full Site Editing (FSE) / Block Theme architecture
+- Shared UI elements are implemented via Block Templates and Block Patterns
+- Classic PHP-based theme assumptions are not used
+- Data and search logic remain independent from presentation layer
+- 
 All such decisions are recorded in change-log.md.
