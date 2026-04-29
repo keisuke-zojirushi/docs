@@ -344,6 +344,21 @@ Summary:
 - Capacity variation -> Alias only (single Product)
 - Specification variation (A, B, etc.) -> Separate Product
 
+### Taxonomy and Alias Separation
+
+Taxonomy and Model Alias have clearly separated responsibilities:
+
+- Taxonomy:
+  - Category
+  - Sub Category
+  - Navigation and filtering
+
+- Model Alias:
+  - Search normalization only
+  - No classification responsibility
+
+Model Alias MUST NOT overlap with taxonomy usage.
+
 
 ## 4. Product Attributes (ACF)
 ### 4.1 Core Fields
