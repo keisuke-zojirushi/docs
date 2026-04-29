@@ -1,5 +1,22 @@
 # Change Log
+
 ## 2026-04-24
+
+### Design & Theme
+- All page-level UI mockups have been completed in Figma
+  - Landing Page
+  - List / Search Result Pages
+  - Product Detail Page
+  - Common navigation and sidebar layout
+- Figma mockups represent the final design target
+  - Phase 1 implementation may use simplified UI where appropriate
+  - Phase 2 features will align strictly with the completed Figma design
+
+### WordPress Theme
+- The site is implemented based on **WordPress Twenty Twenty-Five**
+  - Block theme (Full Site Editing) architecture
+  - Layout and shared UI components are implemented using Block Templates and Block Patterns
+  - No classic PHP-based theme structure is assumed
 
 ### Product / Model Data Structure
 - Product（CPT）登録を完了（30 models）
