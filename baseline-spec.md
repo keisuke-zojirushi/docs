@@ -292,6 +292,28 @@ Category/Sub Category are the only official classification axes.
 Product Tags are not used.
 
 
+### Model Alias (Search Normalization)
+
+Model Alias is implemented as a dedicated Custom Post Type and is used exclusively
+for search normalization and input variation handling.
+
+Model Alias Responsibilities:
+- Normalize model number input variations
+- Absorb differences in:
+  - Hyphen / no-hyphen
+  - Capacity numbers (e.g., 06 / 10 / 18)
+  - Common typing variations
+- Do NOT represent product classification or hierarchy
+
+Each Model Alias defines:
+- Normalized Key (series-level identifier)
+- Display Name (human-readable)
+- Search Variations (input variants)
+- Applicable Product(s)
+
+Model Alias is not exposed as a taxonomy and is not used for navigation.
+
+
 ## 4. Product Attributes (ACF)
 ### 4.1 Core Fields
 
