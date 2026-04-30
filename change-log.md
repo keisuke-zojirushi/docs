@@ -1,5 +1,13 @@
 # Change Log
 
+### Forms (Planned)
+
+- Parts Order Form and Warranty Claim Form are defined as independent form pages
+- Form implementation is intentionally deferred
+  - Core site behavior focuses on search and reference use in current phase
+  - Forms will be added incrementally without impacting search or product pages
+- Navigation structure already includes hooks for future form pages
+
 ## 2026-04-24
 
 ### Design & Theme
