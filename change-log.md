@@ -1,5 +1,18 @@
 # Change Log
 
+## 2026-04-30
+
+### Product Category Structure
+- Official Product Category structure finalized for ZAC SVC Site
+- Consolidated legacy ZAC categories and aligned with Shopify taxonomy
+- Defined 8 top-level Product Categories with optional Sub Categories
+- Designed for service/repair workflows and phased UI expansion
+
+### Status
+- Category structure approved and locked
+- Used for sidebar navigation, archive pages, and future filtering
+
+
 ### Forms (Planned)
 
 - Parts Order Form and Warranty Claim Form are defined as independent form pages
