@@ -115,6 +115,17 @@ and treated as external reference data.
 - WordPress serves as a display and lookup layer only
 - External systems remain the single source of truth
 
+## Forms
+
+Parts Order Form and Warranty Claim Form are included in the overall site design
+and UI mockups.
+
+However, form implementation is intentionally excluded from the initial scope
+and will be added incrementally in later phases.
+
+Forms are treated as independent transactional pages and do not affect
+core search, product, or part reference functionality.
+
 ### Data Items
 - Parts Price
 - Inventory Quantity
