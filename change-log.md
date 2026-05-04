@@ -1,5 +1,27 @@
 # Change Log
 
+## 2026-05-04 — Hosting Migration (Kinsta → EasyWP)
+
+### Summary
+Temporary migration of the SVC WordPress site from Kinsta to Namecheap EasyWP to avoid billing risk and continue development safely.
+
+### Reason
+- Kinsta free trial period approaching expiration
+- Hosting account tied to a personal credit card
+- Required a fully managed, low-cost, short-term WordPress environment
+
+### Details
+- Source: Kinsta (Managed WordPress)
+- Destination: Namecheap EasyWP (Starter, temporary)
+- Migration tool: WPvivid Backup Plugin  
+  (All‑in‑One WP Migration is banned on Kinsta)
+
+### Result
+- ✅ Full database and file restore completed successfully
+- ✅ No content loss observed
+- ✅ Development continues on EasyWP temporary URL
+- 🔜 Kinsta scheduled for cancellation after verification window
+
 ## 2026-04-30
 
 ### Product Category Structure
