@@ -56,4 +56,20 @@ for viewing product diagrams and parts lists.
 - Scroll separation
 - Better zoom (pan / wheel)
 - Possible ACF Pro introduction
-``
+
+## Project Structure
+
+This repository contains documentation and partial implementation of the ZAC SVC system.
+
+### Directory Structure
+-wp-theme/
+  twentytwentyfive-child/
+    single-model_alias.php
+    style.css
+
+### Notes
+
+- WordPress is used as the application layer
+- Model Alias is the core data structure
+- Diagrams are stored as PNG images
+- Parts list is currently manually managed
