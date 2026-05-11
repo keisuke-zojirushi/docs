@@ -16,3 +16,44 @@ This folder contains the design foundation for the ZAC SVC site.
 - Do not change design-principles lightly
 - baseline-spec may evolve
 - All changes must be recorded in change-log
+
+# ZAC SVC Site (Prototype)
+
+## Overview
+Internal support tool for Technical Support (SVC)
+for viewing product diagrams and parts lists.
+
+## Current Status
+- WordPress based
+- Custom Post Type: Model Alias
+- Diagram (PNG) display
+- Parts list (manual text → table)
+- Fuzzy search implemented
+- Status control (active / hidden)
+- Image zoom (click to scale)
+
+## Key Structure
+
+### Model Alias
+- diagram_image
+- diagram_image_2 (optional)
+- parts_list
+- status
+
+## Current Features
+- Model search (including variations)
+- Diagram + Parts display
+- Zoom (basic)
+- Horizontal layout (Flex)
+
+## Known Limitations
+- Parts data is manual
+- No centralized parts DB
+- Zoom is simple (no drag yet)
+
+## Next Steps
+- UI improvements (resizable split)
+- Scroll separation
+- Better zoom (pan / wheel)
+- Possible ACF Pro introduction
+``
