@@ -302,6 +302,18 @@ Note:
 Category/Sub Category are the only official classification axes.
 Product Tags are not used.
 
+### Update document classification and naming for clarity
+
+- Renamed "Operation Instructions" to "User Manual"
+- Consolidated "After Service Information" and "Repair Instructions" into "Technical Info"
+- Standardized document categories to four types:
+  - Parts Price List
+  - Service Manual
+  - User Manual
+  - Technical Info
+
+This change improves usability for English-speaking service centers by simplifying terminology and reducing ambiguity.
+
 
 ### Model Alias (Search Normalization)
 
