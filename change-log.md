@@ -1,5 +1,32 @@
 # Change Log
 
+
+### 🔧 Update: Document Classification Simplification
+
+To improve usability for North American service centers (SVC), document categories have been simplified and standardized.
+
+#### ✅ Changes
+- Renamed:
+  - **Operation Instructions → User Manual**
+    - Clarifies that the document is intended for end users
+- Consolidated:
+  - **After Service Information + Repair Instructions → Technical Info**
+    - Reduces confusion and groups supplementary technical materials into a single category
+
+#### ✅ Final Document Structure
+- Parts Price List ✅ (Primary)
+- Service Manual ✅ (Primary)
+- User Manual ✅ (Secondary)
+- Technical Info ✅ (Secondary)
+
+#### ✅ Purpose
+- Improve clarity for English-speaking users
+- Reduce ambiguity between document types
+- Focus on essential service-related documentation
+- Eliminate unnecessary or redundant categories
+
+This structure aligns the system with real-world SVC usage and improves overall UX.
+
 ## 2026-05-04 — Hosting Migration (Kinsta → EasyWP)
 
 ### Summary
