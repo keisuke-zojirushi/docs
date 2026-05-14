@@ -1,7 +1,7 @@
 # Change Log
 
 
-### 🔧 Update: Document Classification Simplification
+## 2026-05-14🔧 Update: Document Classification Simplification
 
 To improve usability for North American service centers (SVC), document categories have been simplified and standardized.
 
