@@ -442,6 +442,54 @@ Description
 Price (may vary by SVC context)
 Global Notes
 
+# Parts System Specification
+
+## Data Structure
+
+### Products (Model)
+- post_title: Model name (e.g. NS-WTC10)
+
+### Parts
+Each part is stored as a separate record.
+
+Fields:
+- model (string)
+- diagram_no (integer)
+- part_number (string)
+- description (string)
+- price (decimal)
+- alt_part_number (string)
+
+## Relationship
+
+- Parts are linked to Products via the "model" field
+- Matching condition:
+  model (Parts) = post_title (Product)
+
+## Rendering Logic
+
+On Product detail page:
+- Query Parts where model matches current Product title
+- Sort by diagram_no
+- Display in table format
+
+## Current Limitations
+
+- No multi-model relationship (duplicate entries used instead)
+- Single price field only
+- Manual CSV preparation required
+
+## Planned Enhancements
+
+- Add search functionality by part_number
+- Add multiple pricing fields:
+  - price_svc
+  - price_repair
+  - price_mexico
+- Implement CSV / Excel download from Product page
+- Replace PDF-based Parts Price List
+  
+
 
 
 
