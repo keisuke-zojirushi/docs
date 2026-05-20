@@ -1,6 +1,31 @@
 # Change Log
 
+## 2026-05-20 Parts System Migration (Phase 1)
 
+### Added
+- Introduced Parts data structure using CSV import
+- Added fields:
+  - model
+  - diagram_no
+  - part_number
+  - description
+  - price
+  - alt_part_number
+- Enabled per-part row-based data structure (1 row = 1 part)
+
+### Changed
+- Migrated from manual parts_list text field to structured Parts data
+- Removed dependency on manually formatted text-based parts tables
+
+### In Progress
+- Testing Parts import for Rice Cooker models
+- Validating model-to-parts relationship using "model" field
+
+### Planned
+- Replace PDF Parts Price List with dynamic CSV download
+- Implement Parts search by part_number
+- Add multiple price types (SVC / Repair / Mexico)
+  
 ## 2026-05-14🔧 Update: Document Classification Simplification
 
 To improve usability for North American service centers (SVC), document categories have been simplified and standardized.
