@@ -1,0 +1,6 @@
+model,diagram_no,part_number,description,price,alt_part_number
+NS-WTC10,1,8-NSV-P010,Outer Lid,,
+NS-WTC10,2,8-NSV-P020,Lid Cover,,
+NS-WTC10,3,8-NSV-P030,Lid Ring,,
+NS-WTC10,9,8-NSV-P090,Inner Lid set (C84),11.95,C84-6B
+NS-WTC10,10,8-NMD-P090,Inner Lid Packing,2.60,614407-00
