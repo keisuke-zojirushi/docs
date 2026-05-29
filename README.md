@@ -67,6 +67,90 @@ This repository contains documentation and partial implementation of the ZAC SVC
     single-model_alias.php
     style.css
 
+## UI Progress Log
+
+### 2026-05-29
+
+#### TOP Page
+
+Completed:
+
+* Sidebar Search Layout
+* News Topics Integration
+* Quick Links Section
+* Category Navigation Section
+
+Fixed:
+
+* TwentyTwentyOne Theme CSS Conflicts
+* Sidebar Layout Issues
+* News Custom Post Type Rendering
+
+Current Status:
+
+* TOP Page Mock Version Implemented
+* ZOIS-inspired Layout Applied
+
+Next:
+
+* Header Refinement
+* Navigation Cleanup
+* Responsive Layout
+* News Scroll Area
+* Category Dynamic Generation
+
+---
+
+## System Architecture
+
+### Platform
+
+WordPress
+
+### Custom Post Types
+
+* Models
+* Parts
+* zac_news
+
+### Taxonomy
+
+product_category
+
+Example:
+
+Rice Cookers
+├─ Pressure IH
+├─ IH
+└─ Micom
+
+Water Boilers
+├─ VE
+└─ Micom
+
+---
+
+## Design Goals
+
+Inspired by:
+
+* ZOIS (Zojirushi Online Information System)
+
+Principles:
+
+* Lightweight
+* Fast
+* Corporate Portal Style
+* Minimal UI
+* Service Center Focused
+
+Avoid:
+
+* Marketing Site Design
+* Excessive Animations
+* Heavy UI Frameworks
+
+
 ### Notes
 
 - WordPress is used as the application layer
