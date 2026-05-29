@@ -1,5 +1,63 @@
 # Change Log
 
+
+## 2026-05-29
+
+### Added
+
+* TOP Page Layout
+* Sidebar Search Component
+* News Topics Section
+* Quick Links Section
+* Category Navigation Section
+
+### Changed
+
+* Replaced static News area with WordPress Custom Post Type (`zac_news`)
+* Updated TOP page structure to ZOIS-inspired layout
+* Reorganized sidebar search flow
+
+### Fixed
+
+* TwentyTwentyOne CSS conflicts
+* Sidebar width and layout issues
+* News Topics rendering issues
+* Footer removal on TOP page
+
+### Current Status
+
+TOP page mock version is now functional.
+
+Implemented:
+
+* Sidebar Search
+* News Topics
+* Quick Links
+* Category Section
+
+### Next Tasks
+
+* Header redesign
+* Navigation cleanup
+* Responsive layout
+* Dynamic Category links
+* News scroll area improvements
+
+---
+
+## 2026-05-28
+
+### Added
+
+* Custom Post Type: zac_news
+* News Topics dashboard posting system
+
+### Fixed
+
+* News query integration
+* WordPress admin posting workflow
+
+
 ## 2026-05-20 Parts System Migration (Phase 1)
 
 ### Added
