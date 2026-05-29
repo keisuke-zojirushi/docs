@@ -1,3 +1,33 @@
+## Current Status
+
+Current Version:
+v0.5 Prototype
+
+Completed:
+
+- Model Search
+- Product Detail Page
+- Exploded View
+- Split Pane Layout
+- Zoom / Pan
+- Parts List
+- CSV Download
+- News Topics
+- TOP Page Prototype
+
+In Progress:
+
+- Header Integration
+- Navigation Structure
+- TOP Page UI Refinement
+
+Planned:
+
+- Responsive Design
+- Parts Search
+- Forms
+
+
 # Baseline Spec (2026-04)
 Last updated: 2026-04-16
 
@@ -563,3 +593,109 @@ Implementation principles:
 - Data and search logic remain independent from presentation layer
 - 
 All such decisions are recorded in change-log.md.
+
+
+## Document Types
+
+The system supports four official document categories.
+
+- Parts Price List
+- Service Manual
+- User Manual
+- Technical Info
+
+These document types are displayed on:
+- Search Results
+- Product Detail Pages
+
+## Search Specification
+
+Supported Search Methods
+
+### Model Search
+
+Search by:
+
+- Model Number
+- Alias
+- Category
+- Sub Category
+
+### Alias Resolution
+
+Examples:
+
+NW-QAC10
+NWQAC10
+NW-QAC18
+
+↓
+
+NW-QAC Series
+
+## Product Detail Page
+
+### Features
+
+- Breadcrumb Navigation
+- Category Navigation
+- Exploded View
+- Zoom In / Out
+- Reset Zoom
+- Mouse Wheel Zoom
+- Drag Pan
+- Hotspot Highlight
+- Resizable Split Pane
+- Parts Table
+- CSV Download
+
+### Layout
+
+Left Pane:
+- Exploded Diagram
+
+Right Pane:
+- Parts List
+
+## TOP Page
+
+### Purpose
+
+Entry point after login.
+
+### Components
+
+- Sidebar Search
+- News Topics
+- Quick Links
+- Product Categories
+
+### Design Direction
+
+Reference:
+
+- ZOIS
+
+Goals:
+
+- Lightweight
+- Service Center Focused
+- Minimal UI
+- Fast Navigation
+
+
+## Theme Policy
+
+Base Theme:
+
+- Twenty Twenty-Five
+
+Implementation:
+
+- Child Theme
+- Custom Templates
+- Custom Header
+- Custom Search Pages
+
+Application-style pages may bypass standard
+WordPress layouts when required.
