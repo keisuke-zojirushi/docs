@@ -699,3 +699,238 @@ Implementation:
 
 Application-style pages may bypass standard
 WordPress layouts when required.
+
+# Parts Pricing Specification
+
+## Overview
+
+The system uses a single master price field for all Parts pricing calculations.
+
+```text
+distributor_price
+```
+
+All displayed prices, order pricing, and warranty calculations are derived from this value.
+
+---
+
+## Parts ACF Structure
+
+### Required Fields
+
+```text
+model
+no
+partnumber
+description
+size
+distributor_price
+jpnumber
+remarks
+```
+
+### Pricing Field
+
+```text
+distributor_price
+```
+
+Field Type:
+
+```text
+Number
+```
+
+This field represents the Zojirushi America Distributor Price and serves as the master pricing source.
+
+---
+
+## Role-Based Pricing
+
+### Admin
+
+```text
+Distributor Price × 100%
+```
+
+### Editor
+
+```text
+Distributor Price × 100%
+```
+
+### ZAC TS Staff
+
+```text
+Distributor Price × 100%
+```
+
+### US & CANADA SVC
+
+```text
+Distributor Price × 82%
+```
+
+### MEXICO SVC
+
+```text
+Distributor Price × 100%
+```
+
+### PARTS Retailor
+
+```text
+Distributor Price × 82% × 85%
+```
+
+All calculations use:
+
+```php
+round()
+```
+
+for final display values.
+
+---
+
+## Pricing Functions
+
+### zati_get_svc_price()
+
+Purpose:
+
+Returns standard Service Center pricing.
+
+Formula:
+
+```text
+Distributor Price × 82%
+```
+
+---
+
+### zati_get_part_price_by_role()
+
+Purpose:
+
+Returns the appropriate price based on the logged-in user's role.
+
+Used by:
+
+* Model Detail
+* Parts Search
+* Parts Order Form
+* Future Warranty Claim features
+
+---
+
+## Model Detail
+
+File:
+
+```text
+single-model_alias.php
+```
+
+The Parts List price column must use:
+
+```php
+zati_get_part_price_by_role()
+```
+
+and must never display the raw database value directly.
+
+---
+
+## Parts Search
+
+File:
+
+```text
+page-model-search.php
+```
+
+The Price column must use:
+
+```php
+zati_get_part_price_by_role()
+```
+
+to ensure pricing consistency with Model Detail.
+
+---
+
+## Warranty Claim
+
+Version 1 Scope:
+
+Supported Roles:
+
+* US & CANADA SVC
+* ZAC TS Staff
+* Admin
+* Editor
+
+Excluded Roles:
+
+* MEXICO SVC
+* PARTS Retailor
+
+Parts reimbursement price:
+
+```text
+Distributor Price × 82%
+```
+
+Used through:
+
+```php
+zati_get_svc_price()
+```
+
+---
+
+## Parts Order
+
+Supported Roles:
+
+* US & CANADA SVC
+* MEXICO SVC
+* PARTS Retailor
+
+Displayed pricing follows:
+
+```php
+zati_get_part_price_by_role()
+```
+
+---
+
+## WP All Import Specification
+
+Parts CSV format:
+
+```csv
+model,no,partnumber,jpnumber,description,distributor_price,remarks
+```
+
+Mapping:
+
+```text
+model              → model
+no                 → no
+partnumber         → partnumber
+jpnumber           → jpnumber
+description        → description
+distributor_price  → distributor_price
+remarks            → remarks
+```
+
+All imported pricing data must be imported into:
+
+```text
+distributor_price
+```
+
+only.
+
