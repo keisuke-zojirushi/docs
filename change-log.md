@@ -206,6 +206,44 @@ The Parts pricing architecture is now ready for:
 * WP All Import integration
 
 
+## 2026-06-11 – WordPress Compatibility Update
+
+### Deprecated Function Removal
+
+Replaced deprecated:
+
+```php
+get_page_by_title()
+
+with:
+
+WP_Query()
+
+to maintain compatibility with WordPress 6.2+ and future releases.
+
+Result
+Deprecated warning removed
+Production List page functioning normally
+Improved future WordPress compatibility
+
+---
+
+## 現在の残タスク
+
+
+
+```text
+Models data recovery
+Parts data recovery
+WP All Import design
+Medium Priority
+Parts Order Form
+Warranty Claim Form
+Low Priority
+Login redirect enforcement
+Role-based menu visibility
+Final design tuning
+
 ## 2026-05-29
 
 ### Added
