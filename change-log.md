@@ -1,4 +1,209 @@
 # Change Log
+# 2026-06-11 – Parts Pricing System Refactoring
+
+## Overview
+
+Refactored the Parts pricing architecture to support role-based pricing for Service Centers, Technical Support staff, and future Parts Order / Warranty Claim workflows.
+
+This update establishes **Distributor Price** as the single source of truth for all Parts pricing calculations.
+
+---
+
+## ACF Changes
+
+### Previous Structure
+
+```text
+price
+```
+
+### New Structure
+
+```text
+distributor_price
+```
+
+The legacy `price` field is being phased out.
+
+All future imports and pricing calculations will use:
+
+```text
+distributor_price
+```
+
+---
+
+## User Roles
+
+The following roles are now supported by the pricing system:
+
+| Role            | Slug               |
+| --------------- | ------------------ |
+| Admin           | administrator      |
+| Editor          | editor             |
+| ZAC TS Staff    | zac_ts             |
+| US & CANADA SVC | us_canada_svc      |
+| MEXICO SVC      | mexico_svc         |
+| PARTS Retailor  | canada_parts_sales |
+
+---
+
+## Pricing Rules
+
+### Distributor Price
+
+Base price maintained by Zojirushi America.
+
+### Display Price by Role
+
+| Role            | Calculation                   |
+| --------------- | ----------------------------- |
+| Admin           | Distributor Price × 100%      |
+| Editor          | Distributor Price × 100%      |
+| ZAC TS Staff    | Distributor Price × 100%      |
+| US & CANADA SVC | Distributor Price × 82%       |
+| MEXICO SVC      | Distributor Price × 100%      |
+| PARTS Retailor  | Distributor Price × 82% × 85% |
+
+All calculations are rounded using PHP `round()`.
+
+---
+
+## New Functions
+
+Added to:
+
+```text
+functions.php
+```
+
+### zati_get_svc_price()
+
+Returns standard Service Center pricing.
+
+```text
+Distributor Price × 82%
+```
+
+### zati_get_part_price_by_role()
+
+Returns pricing automatically based on logged-in user role.
+
+Used throughout the system to ensure pricing consistency.
+
+---
+
+## Search Results Integration
+
+Updated:
+
+```text
+page-model-search.php
+```
+
+Price column now uses:
+
+```php
+zati_get_part_price_by_role()
+```
+
+instead of directly displaying stored values.
+
+Verified:
+
+```text
+Distributor Price = 100
+
+Admin
+→ 100
+
+US & CANADA SVC
+→ 82
+```
+
+---
+
+## Model Detail Integration
+
+Updated:
+
+```text
+single-model_alias.php
+```
+
+Parts List pricing now uses the same role-based pricing logic as Search Results.
+
+Verified:
+
+```text
+Distributor Price = 100
+
+Admin
+→ 100
+
+US & CANADA SVC
+→ 82
+```
+
+---
+
+## Warranty Claim Planning
+
+Initial Warranty Claim implementation will support:
+
+* US & CANADA SVC
+* ZAC TS Staff
+* Admin
+* Editor
+
+Not included in Version 1:
+
+* MEXICO SVC
+* PARTS Retailor
+
+Warranty Claim Parts reimbursement will use:
+
+```text
+Distributor Price × 82%
+```
+
+through:
+
+```php
+zati_get_svc_price()
+```
+
+---
+
+## Import Specification
+
+Planned Parts CSV format:
+
+```csv
+model,no,partnumber,jpnumber,description,distributor_price,remarks
+```
+
+Future WP All Import processes will populate:
+
+```text
+distributor_price
+```
+
+directly.
+
+---
+
+## Status
+
+Pricing engine implementation completed and verified.
+
+The Parts pricing architecture is now ready for:
+
+* Parts Search
+* Model Detail
+* Parts Order Form
+* Warranty Claim Form
+* WP All Import integration
 
 
 ## 2026-05-29
