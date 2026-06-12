@@ -1,4 +1,14 @@
 # Change Log
+
+
+## 2026-06-11 – WordPress Compatibility Update
+
+### Deprecated Function Removal
+
+Replaced deprecated:
+
+```php
+get_page_by_title()
 # 2026-06-11 – Parts Pricing System Refactoring
 
 ## Overview
