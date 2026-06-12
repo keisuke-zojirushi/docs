@@ -3,6 +3,7 @@
 
 ## 2026-06-11 – WordPress Compatibility Update
 
+
 ### Deprecated Function Removal
 
 Replaced deprecated:
