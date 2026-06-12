@@ -1,0 +1,13 @@
+Master Data Policy
+
+Master:
+CSV / Excel
+
+System:
+WordPress
+
+Update Flow:
+Excel
+→ CSV
+→ WP All Import
+→ Website
