@@ -1,0 +1,13 @@
+Input
+    ↓
+Validation
+    ↓
+Review
+    ↓
+Submit
+    ↓
+Email
+    ↓
+Excel
+    ↓
+TS
