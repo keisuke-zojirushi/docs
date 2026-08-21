@@ -365,6 +365,34 @@ Recommended access:
 
 ---
 
+Administrator
+→ あなた
+→ WordPress全体管理
+→ ユーザー管理
+→ テーマ / プラグイン
+→ WP All Import
+→ ZATI全機能
+
+ZAC TS Staff
+→ TS担当3名
+→ サイト全体閲覧
+→ Newsなど投稿・編集
+→ Warranty Claim
+→ Warranty Claim Archive
+→ Parts Order
+→ Parts Order Archive
+→ TS Processing
+→ Monthly Summary
+
+ZAC Staff
+→ VP・他部署
+→ ZATIサイト全体閲覧
+→ 基本的に編集不可
+
+SVC
+→ 現在の仕様のまま
+→ 各SVCに許可されたフォームと自社データのみ
+
 ## GitHub Usage
 
 Public GitHub may be used for documentation only.
