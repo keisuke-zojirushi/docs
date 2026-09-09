@@ -125,3 +125,10 @@ ZATI
 | Initial setup / master changes | `ZATI_PartsMaster.csv` | Create or update core part information |
 | Initial setup / model changes | `ZATI_ModelParts.csv` | Create or update model-part relationships |
 | Daily / frequent update | `ZATI_Parts_Daily_Update.csv` | Update Retail Price, Dist Price, Stock 04 and Stock 51 only |
+
+
+## 11.　WP All Import
+Import ID: 48
+- Purpose: Parts Daily Update
+- Match Key: partnumber
+- Updates: distributor_price, retail_price, stock_04, stock_51
