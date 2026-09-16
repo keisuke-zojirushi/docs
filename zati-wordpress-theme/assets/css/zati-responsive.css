@@ -1,0 +1,11 @@
+/* =========================
+   ZATI Responsive
+========================= */
+
+.zati-form-page {
+  background: #fff8e6;
+  min-height: calc(100vh - 120px);
+  padding: 36px 0 56px;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  color: #333;
+}

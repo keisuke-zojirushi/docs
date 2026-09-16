@@ -1,0 +1,153 @@
+/* =========================================================
+   ZATI News Topics
+========================================================= */
+
+/* Page */
+
+.zati-news-single-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+
+/* Main Layout */
+
+.zati-news-single-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  width: 100%;
+  min-height: calc(100vh - 190px);
+}
+
+
+/* Search Sidebar */
+
+.zati-news-search-sidebar {
+  width: 220px;
+  padding: 22px 14px 50px;
+  background: #fff8e6;
+  border-right: 1px solid #d5d9dd;
+  box-sizing: border-box;
+}
+
+.zati-news-search-sidebar input,
+.zati-news-search-sidebar select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.zati-news-search-sidebar button {
+  width: auto;
+}
+
+
+/* News Main Area */
+
+.zati-news-single-main {
+  min-width: 0;
+  padding: 90px 60px 120px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+
+/* Article */
+
+.zati-news-single-article {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 760px);
+  gap: 46px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* Date */
+
+.zati-news-single-date {
+  padding-top: 4px;
+  color: #8a8f96;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* Content */
+
+.zati-news-single-content {
+  min-width: 0;
+}
+
+.zati-news-single-title {
+  margin: 0 0 42px;
+  padding: 0;
+  color: #0078bd;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.zati-news-single-body {
+  color: #1f2937;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.zati-news-single-body p {
+  margin: 0 0 24px;
+}
+
+.zati-news-single-body a {
+  color: #0078bd;
+  text-decoration: underline;
+}
+
+.zati-news-single-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Remove Twenty Twenty-One article sizing */
+
+.zati-news-single-article.entry,
+.zati-news-single-article .entry-content {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+  .zati-news-single-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .zati-news-search-sidebar {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid #d5d9dd;
+  }
+
+  .zati-news-single-main {
+    padding: 50px 24px 80px;
+  }
+
+  .zati-news-single-article {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .zati-news-single-title {
+    margin-bottom: 28px;
+  }
+}

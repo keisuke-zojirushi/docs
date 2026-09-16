@@ -1,0 +1,3834 @@
+/* ==================================================
+   ZATI Form Framework v1.0
+   For Warranty Claim / Parts Order / Repair Log / Service Report
+   UI Direction: ZAC / Kintone-like internal business form
+================================================== */
+
+/* ==================================================
+   01. Design Tokens
+================================================== */
+
+:root {
+  --zati-color-page-bg: #fff8e6;
+  --zati-color-surface: #ffffff;
+  --zati-color-surface-soft: #fffaf0;
+  --zati-color-section-bg: #f8fafc;
+
+  --zati-color-text: #222222;
+  --zati-color-text-muted: #6b7280;
+  --zati-color-text-heading: #1f2937;
+  --zati-color-label: #212c3b;
+
+  --zati-color-border: #d9dee7;
+  --zati-color-border-soft: #e5e7eb;
+  --zati-color-border-warm: #d8d2bd;
+
+  --zati-color-primary: #1f6fd1;
+  --zati-color-primary-hover: #185fb4;
+  --zati-color-link: #0070c0;
+
+  --zati-color-zac-yellow: #f2c400;
+  --zati-color-zac-yellow-border: #e0b800;
+
+  --zati-color-readonly-bg: #f3f4f6;
+  --zati-color-required: #d93025;
+
+  --zati-radius-sm: 3px;
+  --zati-radius-md: 4px;
+  --zati-radius-pill: 999px;
+
+  --zati-font-base: Arial, "Helvetica Neue", sans-serif;
+
+  --zati-page-max-width: 1280px;
+  --zati-input-height: 38px;
+  --zati-input-height-sm: 32px;
+}
+
+/* ==================================================
+   02. Page / Layout
+================================================== */
+
+.zati-form-page {
+  background: var(--zati-color-page-bg);
+  min-height: calc(100vh - 120px);
+  padding: 36px 0 56px;
+  font-family: var(--zati-font-base);
+  color: var(--zati-color-text);
+}
+
+.zati-form-wrap {
+  max-width: var(--zati-page-max-width);
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.zati-form-header {
+  margin-bottom: 24px;
+}
+
+.zati-form-title,
+.zati-form-wrap h1 {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--zati-color-text-heading);
+  margin: 0 0 22px;
+}
+
+.zati-breadcrumb {
+  font-size: 13px;
+  color: var(--zati-color-text-muted);
+  margin-bottom: 16px;
+}
+
+.zati-breadcrumb span::after {
+  content: ">";
+  margin: 0 8px;
+  color: #9ca3af;
+}
+
+.zati-breadcrumb span:last-child::after {
+  content: "";
+}
+
+/* ==================================================
+   03. Sub Navigation
+================================================== */
+
+.zati-subnav {
+  height: 40px;
+  background: #edf4fa;
+  border-bottom: 1px solid #d6e0ea;
+  display: flex;
+  align-items: center;
+  padding: 0 24px !important;
+  font-size: 13px;
+  color: #4f6b82;
+}
+
+.zati-subnav-item {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 14px;
+  border-right: 1px solid #d6e0ea;
+     text-decoration: none;
+}
+
+.zati-subnav-item:first-child {
+  padding-left: 0;
+}
+
+.zati-subnav-item.is-active,
+.zati-subnav-item.active {
+  color: #1f5f8b;
+  font-weight: 600;
+}
+
+a.zati-subnav-item {
+   font-weight: 600;
+}
+
+
+a.zati-subnav-item:hover {
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   04. Sections
+================================================== */
+
+.zati-form-section {
+  margin-top: 10px;
+  padding-top: 18px;
+}
+
+.zati-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.zati-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zati-section-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.zati-row-divider {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--zati-color-border-warm);
+  margin: 4px 0 2px;
+}
+
+/* ==================================================
+   05. Grid / Rows
+================================================== */
+
+.zati-form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px 20px;
+}
+
+.zati-form-row-2,
+.zati-form-row-3,
+.zati-form-row-4,
+.zati-form-row-claim,
+.zati-pair-row,
+.zati-two-field-row,
+.zati-shipping-row,
+.zati-shipping-grid {
+  display: grid;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.zati-form-row-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.zati-form-row-3 {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.zati-form-row-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.zati-form-row-claim {
+  grid-template-columns: 2fr 1fr;
+}
+
+.zati-pair-row {
+  grid-template-columns: 240px 1fr;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.zati-new-row{
+    grid-column: 1;
+}
+
+.zati-two-field-row,
+.zati-shipping-row,
+.zati-shipping-grid {
+  grid-template-columns: 180px 360px;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.zati-field-wide,
+.zati-field--wide {
+  grid-column: span 2;
+}
+
+.zati-field-full,
+.zati-field--full {
+  grid-column: 1 / -1;
+}
+
+.zati-after-parts-row {
+  display: flex;
+  justify-content: flex-start;
+  margin: 18px 0;
+}
+
+.zati-warranty-shipping {
+  margin-top: 24px;
+  margin-bottom: 28px;
+}
+
+
+/* ==================================================
+   06. Fields
+================================================== */
+
+.zati-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.zati-field label,
+.zati-field-label,
+.zati-section-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--zati-color-label);
+  margin-bottom: 5px;
+}
+
+.zati-required,
+.required {
+  color: var(--zati-color-required);
+  font-weight: 700;
+}
+
+.zati-field input,
+.zati-field select,
+.zati-field textarea,
+.zati-input,
+.zati-table input {
+  width: 100%;
+  height: var(--zati-input-height);
+  border: 1px solid #cfd6df;
+  border-radius: var(--zati-radius-sm);
+  background: var(--zati-color-surface);
+  padding: 7px 10px;
+  font-size: 14px;
+  color: var(--zati-color-text);
+  box-sizing: border-box;
+}
+
+.zati-field textarea,
+.zati-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.zati-field input:focus,
+.zati-field select:focus,
+.zati-field textarea:focus,
+.zati-input:focus,
+.zati-table input:focus {
+  outline: none;
+  border-color: #2f80ed;
+  box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.15);
+}
+
+.zati-field input[readonly],
+.zati-input[readonly],
+.zati-table input[readonly],
+.zati-input--readonly {
+  background: var(--zati-color-readonly-bg);
+  color: #555555;
+}
+
+.zati-money-field input,
+.zati-field--money input {
+  max-width: 200px;
+  text-align: right;
+}
+
+.zati-file-field input[type="file"],
+.zati-field--file input[type="file"],
+.zati-two-field-row input[type="file"],
+.zati-shipping-row input[type="file"],
+.zati-shipping-grid input[type="file"] {
+  max-width: 420px;
+  height: 34px;
+  padding: 5px 8px;
+  background: var(--zati-color-surface);
+}
+
+.zati-help-text {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--zati-color-text-muted);
+  margin-left: 6px;
+}
+
+.zati-field-note {
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--zati-color-text-muted);
+}
+
+/* =========================
+   ZATI Select Framework
+========================= */
+
+.zati-select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.zati-select {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #cfd6df;
+  border-radius: 3px;
+  background: #fff;
+  padding: 7px 38px 7px 10px;
+  font-size: 14px;
+  color: #222;
+  box-sizing: border-box;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.zati-select-wrap .zati-select-icon {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4b5563;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.zati-select:focus {
+  outline: none;
+  border-color: #2f80ed;
+  box-shadow: 0 0 0 2px rgba(47,128,237,.15);
+}
+
+.zati-select.zati-input-error {
+  border-color: #d93025 !important;
+  box-shadow: none;
+}
+
+.zati-form-module-card h2 {
+    margin: 0 0 14px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* ==================================================
+   07. Buttons
+================================================== */
+
+.zati-form-actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.zati-btn,
+.zati-primary-btn,
+.zati-secondary-btn {
+  min-width: 140px;
+  height: 42px;
+  border-radius: var(--zati-radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.zati-btn--primary,
+.zati-primary-btn {
+  background: var(--zati-color-primary);
+  color: #ffffff;
+  border: 1px solid var(--zati-color-primary);
+}
+
+.zati-btn--primary:hover,
+.zati-primary-btn:hover {
+  background: var(--zati-color-primary-hover);
+}
+
+.zati-btn--secondary,
+.zati-secondary-btn,
+.zati-secondary-btn.bte {
+  background: #ffffff !important;
+  border: 1px solid #087cc1 !important;
+  color: #087cc1 !important;
+}
+
+.zati-btn--secondary:hover,
+.zati-secondary-btn:hover {
+  background: #f3f4f6;
+}
+
+.zati-btn--link,
+.zati-link-btn,
+.zati-text-action,
+.zati-part-link {
+  border: none;
+  background: transparent;
+  color: var(--zati-color-link);
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.zati-btn--link:hover,
+.zati-link-btn:hover,
+.zati-text-action:hover,
+.zati-part-link:hover {
+  text-decoration: underline;
+}
+
+/* Row add / remove icon buttons */
+.zati-row-add,
+.zati-row-remove {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background: #0078b8 !important;
+  color: #fff !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-size: 11px !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.zati-row-add i,
+.zati-row-remove i {
+  display: block;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.zati-row-add:hover,
+.zati-row-remove:hover {
+  background: #005f91 !important;
+}
+
+.zati-btn--add,
+.zati-add-row-btn,
+.zati-row-add,
+.zati-circle-btn {
+  background: #0b7fc3;
+}
+
+.zati-btn--remove,
+.zati-remove-row-btn,
+.zati-row-remove,
+.zati-circle-gray {
+  background: #9ca3af;
+}
+
+.zati-btn--add:hover,
+.zati-add-row-btn:hover,
+.zati-row-add:hover {
+  background: #096aa2;
+}
+
+.zati-btn--remove:hover,
+.zati-remove-row-btn:hover,
+.zati-row-remove:hover {
+  background: #888f99;
+}
+
+.zati-row-remove.is-hidden {
+  display: none !important;
+}
+
+/* Force hide remove button on first row */
+.zati-zac-parts-table .zati-row-remove.is-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.zati-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 150px;
+    min-height: 40px;
+
+    padding: 9px 18px;
+
+    background: #fff;
+    border: 1px solid #0073aa;
+    border-radius: 3px;
+
+    color: #0073aa;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.zati-secondary-btn:hover {
+    background: #f1f7fb;
+    color: #005f8d;
+    text-decoration: none;
+}
+
+/* ==================================================
+   08. Tables
+================================================== */
+
+.zati-table,
+.zati-parts-table,
+.zati-zac-parts-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: var(--zati-color-surface);
+  border: 1px solid #d2c8a5;
+}
+
+.zati-table th,
+.zati-parts-table th,
+.zati-zac-parts-table th {
+  background: var(--zati-color-zac-yellow);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid var(--zati-color-zac-yellow-border);
+  line-height: 1.2;
+}
+
+.zati-table td,
+.zati-parts-table td,
+.zati-zac-parts-table td {
+  background: var(--zati-color-surface-soft);
+  border: 1px solid var(--zati-color-border-warm);
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+
+.zati-table input,
+.zati-parts-table input,
+.zati-zac-parts-table input {
+  height: var(--zati-input-height-sm);
+  font-size: 13px;
+  padding: 4px 8px;
+}
+
+.zati-table-section {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px dotted #9ca3af;
+}
+
+.zati-table--warranty .zati-col-parts,
+.zati-col-parts {
+  width: 250px;
+}
+
+.zati-table--warranty .zati-col-description,
+.zati-col-description {
+  width: 320px;
+}
+
+.zati-table--warranty .zati-col-price,
+.zati-col-price {
+  width: 100px;
+}
+
+.zati-table--warranty .zati-col-actions,
+.zati-col-actions {
+  width: 60px;
+}
+
+.zati-table--warranty .zati-col-qty,
+.zati-table--parts-order .zati-col-qty,
+.zati-col-qty {
+  width: 60px;
+}
+
+.zati-part-lookup-cell {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.zati-part-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.zati-part-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.zati-part-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zati-part-cell input {
+  width: 150px;
+}
+
+.zati-row-actions,
+.zati-parts-row-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.zati-parts-section {
+    margin-top: 12px;
+}
+
+.zati-parts-section .zati-section-title {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 12px;
+}
+
+
+/* Read Only Fields */
+
+.zati-readonly {
+    background: #f3f4f6 !important;
+    color: #555;
+    cursor: default;
+}
+
+.zati-readonly:focus {
+    border-color: #cfd6df !important;
+    box-shadow: none !important;
+}
+
+
+.zati-zac-parts-table .zati-col-actions,
+.zati-zac-parts-table td.zati-parts-row-actions {
+  width: 64px !important;
+  padding: 4px 6px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.zati-zac-parts-table .zati-parts-row-actions {
+  display: table-cell !important;
+  vertical-align: middle !important;
+}
+
+/* ==================================================
+   09. Totals
+================================================== */
+
+.zati-total-grid {
+  display: grid;
+  grid-template-columns: 140px 120px 120px 120px 120px 140px;
+  gap: 16px;
+  align-items: end;
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: none;
+}
+
+.zati-total-grid .zati-field label,
+.zati-total-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #333333;
+}
+
+.zati-total-grid input,
+.zati-total-field input {
+  height: var(--zati-input-height-sm);
+  font-size: 13px;
+  text-align: right;
+  background: #e9ecef;
+}
+
+.zati-total-final input,
+.zati-total-grid .zati-field:last-child input {
+  font-weight: 700;
+}
+
+.zati-stocking-fee-field {
+  width: 220px;
+}
+
+
+.zati-address-mode-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-bottom: 18px;
+}
+
+.zati-same-address-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--zati-color-label);
+  cursor: pointer;
+}
+
+.zati-same-address-option input {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.zati-address-column .zati-address-panel {
+  min-height: 110px;
+}
+
+#different-addresses-panel .zati-address-panel {
+  min-height: 0;
+}
+
+/* =========================
+   ZATI Forms Hub
+========================= */
+
+.zati-forms-hub-page {
+    flex: 1;
+    width: 100%;
+    padding: 60px 30px 90px;
+    background: #fff;
+}
+
+.zati-forms-hub-wrap {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+}
+
+.app-footer {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.zati-forms-hub-header {
+    margin-bottom: 36px;
+}
+
+.zati-forms-hub-header h1 {
+    margin: 0 0 10px;
+    font-size: 28px !important;
+    line-height: 1.35 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    color: #111827 !important;
+}
+
+.zati-forms-hub-header p {
+    margin: 0;
+    color: #52606d;
+}
+
+.zati-forms-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.zati-form-module-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+    padding: 32px;
+    border: 1px solid #d6dee8;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(20, 45, 70, 0.06);
+}
+
+.zati-form-module-label {
+    display: block;
+    margin-bottom: 15px;
+    color: #2f7fc1;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.zati-form-module-card h2 {
+    margin: 0 0 14px;
+    font-size: 24px;
+}
+
+.zati-form-module-card p {
+    margin: 0;
+    color: #52606d;
+    line-height: 1.7;
+}
+
+.zati-form-module-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.zati-form-module-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 22px;
+    text-decoration: none;
+}
+
+.zati-secondary-btn {
+    border: 1px solid #2f7fc1;
+    color: #2f7fc1;
+    background: #fff;
+    font-weight: 700;
+}
+
+.zati-secondary-btn:hover {
+    color: #fff;
+    background: #2f7fc1;
+}
+
+.zati-forms-hub-empty {
+    padding: 30px;
+    border: 1px solid #d6dee8;
+    background: #f7f9fb;
+    text-align: center;
+}
+
+
+/* ==================================================
+      Review Page
+================================================== */
+body.zati-warranty-review-body {
+  background: #fff !important;
+}
+
+.zati-review-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  background: var(--zati-color-section-bg);
+  border: 1px solid var(--zati-color-border);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.zati-review-header span {
+  display: block;
+  font-size: 12px;
+  color: var(--zati-color-text-muted);
+  margin-bottom: 4px;
+}
+
+.zati-review-header strong {
+  font-size: 15px;
+  color: #111827;
+}
+
+.zati-review-note {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
+  background: var(--zati-color-page-bg);
+  border: 1px solid #f1d28a;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+}
+
+.zati-review-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+}
+
+.zati-review-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.zati-review-section,
+.zati-claim-summary {
+  border: none;
+  background: none;
+}
+
+.zati-review-section {
+  margin-bottom: 24px;
+}
+
+.zati-claim-summary {
+  align-self: start;
+}
+
+.zati-review-section h2,
+.zati-claim-summary h2 {
+  margin: 0;
+  padding: 10px 0;
+  /* border-bottom: 1px solid var(--zati-color-border); */
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--zati-color-label);
+}
+
+.zati-review-section dl,
+.zati-claim-summary dl {
+  margin: 0;
+}
+
+.zati-review-section dt,
+.zati-claim-summary dt {
+  background: none;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 0 12px 0;
+}
+
+.zati-review-section dd,
+.zati-claim-summary dd {
+  margin: 0;
+  padding: 0 12px 12px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.zati-review-parts table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.zati-review-parts th {
+  background: var(--zati-color-section-bg);
+  font-size: 13px;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid var(--zati-color-border);
+}
+
+.zati-review-parts td {
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid var(--zati-color-border);
+}
+
+.zati-summary-total {
+  padding: 10px 16px  5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.zati-summary-total span {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--zati-color-label);
+}
+
+.zati-summary-total strong {
+  font-size: 22px;
+  color: var(--zati-color-primary);
+}
+
+.zati-attached {
+  display: inline-block;
+  background: #e8f3ff;
+  color: var(--zati-color-primary);
+  border: 1px solid #b9d8ff;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 11px;
+     max-width: 160px;
+  overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+
+.zati-forms-hub-notice {
+    margin: 0 0 28px;
+    padding: 14px 18px;
+    border: 1px solid #e2bd70;
+    border-left: 4px solid #d89b24;
+    background: #fff8e8;
+    color: #654b16;
+    font-size: 14px;
+}
+
+/* =========================
+   Warranty Claim & Parts Order  Review
+========================= */
+/*.zati-form-page.zati-review-page{
+    background:#fff;
+}*/
+
+.zati-review-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+  background: #fff;
+}
+
+.zati-review-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 36px;
+}
+
+.zati-review-header {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 8px 40px;
+  max-width: 620px;
+  margin-bottom: 22px;
+}
+
+.zati-review-header {
+  border: none;
+  background: transparent;
+  padding: 0;
+  grid-template-columns: 180px 1fr;
+}
+
+.zati-review-header span {
+  color: #888;
+  font-size: 14px;
+}
+
+.zati-review-header strong {
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+}
+
+.zati-review-note {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 18px 0 18px;
+}
+
+.zati-review-page hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 18px 0;
+}
+
+.zati-review-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+.zati-review-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 48px;
+}
+
+.zati-review-section h2,
+.zati-review-parts h2 {
+  font-size: 18px;
+  margin: 0 0 18px;
+    font-weight: 600;
+}
+
+.zati-claim-summary h2 {
+    font-size: 24px;
+    font-weight: 700;
+       margin: 0 0 20px;
+            padding : 0;
+            color:#0b74c7;
+}
+
+
+.zati-review-section dl,
+.zati-claim-summary dl {
+  margin: 0;
+}
+
+.zati-review-section dt,
+.zati-claim-summary dt {
+  float: left;
+  clear: left;
+  width: 150px;
+  font-size: 15px;
+}
+
+.zati-review-section dd,
+.zati-claim-summary dd {
+  margin-left: 170px;
+  font-size: 15px;
+}
+
+.zati-attached {
+  color: #0073c8;
+}
+
+.zati-claim-summary {
+  border: 1px solid #ccc;
+  padding: 20px 24px;
+  background: #fff;
+}
+
+.zati-claim-summary dt {
+  width: 170px;
+}
+
+.zati-claim-summary dd {
+  margin-left: 180px;
+  text-align: right;
+}
+
+.zati-summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 18px;
+}
+
+.zati-claim-summary{
+    padding: 20px 26px;
+}
+
+.zati-review-parts {
+  margin-top: 48px;
+}
+
+.zati-review-parts table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.zati-review-parts th,
+.zati-review-parts td {
+  padding: 7px 8px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.zati-review-parts th {
+  font-weight: 700;
+}
+
+.zati-review-actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 72px;
+}
+
+.zati-review-actions .zati-secondary-btn,
+.zati-review-actions .zati-primary-btn {
+  width: 180px;
+  height: 44px;
+}
+
+/* .zati-review-page .zati-secondary-btn:hover,
+.zati-review-page .zati-secondary-btn:focus-visible {
+    background-color: #354052;
+    border-color: #354052;
+    color: #fff;
+    opacity: 1;
+} */
+
+
+button.zati-secondary-btn.bte {
+    line-height: 1;
+    font-weight: 600;
+}
+
+.zati-review-wrap{
+
+    background:transparent;
+    border:none;
+
+    max-width:1000px;
+    margin:0 auto;
+
+    padding:40px 0;
+}
+
+.zati-archive-actions {
+    white-space: nowrap;
+}
+
+.zati-archive-actions a {
+    display: inline-block;
+}
+
+.zati-archive-action-separator {
+    display: inline-block;
+    margin: 0 6px;
+    color: #888;
+}
+
+/* =========================
+   Warranty Claim & Parts Order Complete
+========================= */
+
+/* Completeページ全体の背景 */
+body.page-template-page-warranty-claim-complete,
+body.zati-warranty-complete-body {
+  background: #fff !important;
+}
+
+/* Twenty Twenty-Oneの余白・最大幅設定を上書き */
+.zati-complete-page {
+  width: 100%;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+}
+
+/* Completeページのコンテンツ領域 */
+.zati-complete-wrap {
+  width: calc(100% - 48px);
+  max-width: 1240px;
+  min-height: calc(100vh - 290px);
+  margin: 0 auto;
+  padding: 72px 24px 110px;
+  box-sizing: border-box;
+}
+
+/* ページタイトル */
+.zati-complete-wrap h1 {
+  margin: 0 0 36px !important;
+  padding: 0 !important;
+  font-size: 28px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  color: #111827 !important;
+  text-transform: none !important;
+}
+
+/* 成功メッセージ */
+.zati-complete-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+/* チェックアイコン */
+.zati-complete-icon {
+  display: flex;
+  flex: 0 0 26px;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  border: 3px solid #087cc1;
+  border-radius: 50%;
+  color: #087cc1;
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+/* 完了メッセージ見出し */
+.zati-complete-message h2 {
+  margin: 0 0 24px !important;
+  padding: 0 !important;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  color: #111827 !important;
+  text-transform: none !important;
+}
+
+/* 完了メッセージ本文 */
+.zati-complete-message p {
+  margin: 0 !important;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* Reference No. / Submitted On */
+.zati-complete-details {
+  margin: 32px 0 34px;
+}
+
+.zati-complete-details p {
+  margin: 0 0 6px !important;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #111;
+}
+
+.zati-complete-details strong {
+  font-weight: 700;
+}
+
+/* 月末処理の説明 */
+.zati-complete-note {
+  margin: 0 !important;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* ボタンエリア */
+.zati-complete-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 112px;
+}
+
+/* Completeページのボタン共通 */
+.zati-complete-actions .zati-primary-btn,
+.zati-complete-actions .zati-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 190px;
+  height: 46px;
+  margin: 0;
+  padding: 0 26px;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none !important;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* 青ボタン */
+.zati-complete-actions .zati-primary-btn {
+  border: 1px solid #087cc1;
+  background: #087cc1;
+  color: #fff !important;
+}
+
+.zati-complete-actions .zati-primary-btn:hover,
+.zati-complete-actions .zati-primary-btn:focus {
+  border-color: #056ba7;
+  background: #056ba7;
+  color: #fff !important;
+}
+
+/* 白ボタン */
+.zati-complete-actions .zati-secondary-btn {
+  border: 1px solid #087cc1;
+  background: #fff;
+  color: #087cc1 !important;
+}
+
+.zati-complete-actions .zati-secondary-btn:hover,
+.zati-complete-actions .zati-secondary-btn:focus {
+  background: #eef7fc;
+  color: #056ba7 !important;
+}
+
+/* Completeページのサブナビ */
+body.page-template-page-warranty-claim-complete .zati-subnav,
+body.zati-warranty-complete-body .zati-subnav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid #d5dee7;
+  background: #eaf2f8;
+  box-sizing: border-box;
+}
+
+body.page-template-page-warranty-claim-complete .zati-subnav-item,
+body.zati-warranty-complete-body .zati-subnav-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-right: 1px solid #d5dee7;
+  font-size: 13px;
+  line-height: 1;
+  color: #3c5972;
+}
+
+body.page-template-page-warranty-claim-complete .zati-subnav-item:first-child,
+body.zati-warranty-complete-body .zati-subnav-item:first-child {
+  border-left: 1px solid #d5dee7;
+}
+
+/* body.page-template-page-warranty-claim-complete .zati-subnav-item.active,
+body.zati-warranty-complete-body .zati-subnav-item.active {
+  color: #124c75;
+  font-weight: 700;
+}*/
+
+
+
+/* =========================
+   Warranty Claim Archive
+========================= */
+
+body.zati-warranty-archive-body {
+  background: #fff !important;
+}
+
+.zati-archive-page {
+  width: 100%;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+}
+
+.zati-archive-wrap {
+  width: calc(100% - 48px);
+  max-width: 1240px;
+  min-height: calc(100vh - 230px);
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Header */
+.zati-archive-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.zati-archive-header-text {
+  min-width: 0;
+}
+
+.zati-archive-header h1 {
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  font-size: 28px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  color: #111827 !important;
+  text-transform: none !important;
+}
+
+.zati-archive-description {
+  margin: 0 !important;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+/* New claim button */
+.zati-archive-new-btn {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  height: 42px;
+  padding: 0 22px;
+  border: 1px solid #087cc1;
+  border-radius: 4px;
+  background: #087cc1;
+  color: #fff !important;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.zati-archive-new-btn:hover,
+.zati-archive-new-btn:focus {
+  border-color: #056ba7;
+  background: #056ba7;
+  color: #fff !important;
+}
+
+/* Filter panel */
+.zati-archive-filters {
+  display: grid;
+  grid-template-columns:
+    minmax(240px, 1fr)
+    120px
+    150px
+    auto
+    auto
+    auto
+    auto;
+  gap: 16px;
+  align-items: end;
+  padding: 20px;
+  border: 1px solid #d9dee7;
+  background: #f8fafc;
+  margin-bottom: 24px;
+}
+.zati-archive-filter-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.zati-archive-filter-field label {
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.zati-archive-filter-field select {
+  width: 100%;
+  height: 38px;
+  padding: 6px 34px 6px 10px;
+  border: 1px solid #cfd6df;
+  border-radius: 3px;
+  background: #fff;
+  font-size: 14px;
+  color: #222;
+  box-sizing: border-box;
+}
+
+.zati-archive-filter-btn,
+.zati-archive-attachments-btn,
+.zati-archive-csv-btn,
+.zati-archive-monthly-summary-btn {
+  white-space: nowrap;
+}
+
+/* SVC Warranty Archive Filters */
+
+.zati-archive-filters:not(.is-ts) {
+    grid-template-columns:
+        minmax(120px, 0.75fr)
+        minmax(160px, 1fr)
+        repeat(3, minmax(155px, 1fr));
+    gap: 16px;
+    align-items: end;
+}
+
+/* Filter buttons */
+.zati-archive-filter-btn,
+.zati-archive-csv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-width: 130px;
+  padding: 0 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.zati-archive-csv-btn.is-disabled,
+.zati-archive-attachments-btn.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.zati-archive-filter-btn {
+  border: 1px solid #273244;
+  background: #273244;
+  color: #fff !important;
+}
+
+.zati-archive-filter-btn:hover {
+  background: #1d2635;
+}
+
+
+.zati-archive-csv-btn:hover {
+  background: #056ba7;
+}
+
+
+.zati-archive-csv-btn,
+.zati-archive-attachments-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 18px;
+    border-radius: 3px;
+    background: #087cc1;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.zati-archive-attachments-btn:hover {
+    background: #066fae;
+    color: #fff;
+}
+
+.zati-archive-attachments-btn.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.zati-archive-filter-btn,
+.zati-archive-attachments-btn,
+.zati-archive-csv-btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    height: 40px;
+    padding: 0 14px;
+    box-sizing: border-box;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 1;
+}
+/* =========================
+   Archive Select Arrow
+========================= */
+
+.zati-archive-filter-field select {
+    width: 100%;
+    padding-right: 42px;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5' fill='none' stroke='%23475769' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    background-size: 18px 18px;
+
+    cursor: pointer;
+}
+
+/* Summary */
+.zati-archive-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.zati-archive-summary-item {
+  padding: 14px 18px;
+  border: 1px solid #d9dee7;
+  background: #fff;
+}
+
+.zati-archive-summary-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.zati-archive-summary-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+}
+
+.zati-archive-summary-value.svcn {
+   font-size: 14px;
+}
+
+.zati-archive-summary-value.is-money {
+  color: #087cc1;
+}
+
+/* TS Warranty Archive Filters */
+
+/* SVC: Year / Month / Filter / CSV */
+
+.zati-archive-filters {
+    grid-template-columns:
+        minmax(110px, 0.8fr)
+        minmax(150px, 1fr)
+        minmax(170px, 1.1fr)
+        minmax(190px, 1.2fr);
+}
+
+/* TS: Service Center / Year / Month / Filter / CSV */
+
+.zati-archive-filters.is-ts {
+    grid-template-columns:
+        minmax(240px, 1.7fr)
+        minmax(100px, 0.7fr)
+        minmax(130px, 0.9fr)
+        repeat(4, minmax(145px, 1fr));
+    gap: 12px;
+}
+
+/* Table */
+.zati-archive-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.zati-archive-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.zati-archive-table th,
+.zati-archive-table td {
+  border: 1px solid #d9dee7;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+.zati-archive-table th {
+  background: #f3f6f9;
+  color: #1f2937;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.zati-archive-table td {
+  color: #222;
+}
+
+.zati-archive-table tbody tr:nth-child(even) td {
+  background: #fbfcfd;
+}
+
+.zati-archive-table tbody tr:hover td {
+  background: #f2f8fc;
+}
+
+.zati-archive-table .zati-money {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.zati-archive-table .zati-total-payment {
+  font-weight: 700;
+}
+
+.zati-archive-status {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e8f3ff;
+  color: #087cc1;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.zati-archive-view-link {
+  color: #087cc1;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.zati-archive-account-no {
+    min-width: 90px;
+    white-space: nowrap;
+}
+
+.zati-archive-account-no strong {
+    font-size: 12px;
+}
+
+/* Empty state */
+.zati-archive-empty {
+  padding: 32px;
+  border: 1px solid #d9dee7;
+  background: #f8fafc;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Notice for account break */
+.zati-archive-notice {
+    margin: 24px 0;
+    padding: 14px 18px;
+    border: 1px solid #e2bd70;
+    border-left: 4px solid #d89b24;
+    background: #fff8e8;
+    color: #654b16;
+    font-size: 14px;
+}
+
+/* =========================
+   Archive Footer Position Fix
+========================= */
+
+body.zati-warranty-archive-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.zati-warranty-archive-body .zati-archive-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body.zati-warranty-archive-body .zati-archive-wrap {
+  flex: 1;
+}
+
+
+/* =========================
+   Warranty Claim Detail
+========================= */
+
+body.zati-warranty-detail-body {
+  background: #fff !important;
+}
+
+.zati-claim-detail-page {
+  min-height: calc(100vh - 230px);
+}
+
+.zati-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.zati-detail-header h1 {
+  margin-bottom: 8px !important;
+}
+
+.zati-detail-reference {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #087cc1;
+}
+
+.zati-detail-not-available {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.zati-detail-empty {
+  padding: 20px;
+  border: 1px solid #d9dee7;
+  background: #f8fafc;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.zati-detail-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.zati-detail-actions .zati-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  height: 44px;
+  padding: 0 24px;
+  border: 1px solid #087cc1;
+  border-radius: 4px;
+  background: #fff;
+  color: #087cc1 !important;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.zati-detail-actions .zati-secondary-btn:hover {
+  background: #eef7fc;
+}
+
+.zati-archive-table th:last-child,
+.zati-archive-table td:last-child {
+  width: 60px;
+  text-align: center;
+}
+
+
+/* =========================
+   Warranty Claim UI Fix
+   Buttons / Parts Table
+========================= */
+
+/* Lookup / Clear: text link style */
+.zati-text-action,
+.zati-link-btn,
+.zati-part-link {
+  background: transparent;
+  border: none;
+  color: #0070c0;
+  font-size: 12px;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  line-height: 1.2;
+}
+
+.zati-text-action:hover,
+.zati-link-btn:hover,
+.zati-part-link:hover {
+  color: #005a9e;
+}
+
+/* Parts table inputs: lighter border */
+.zati-zac-parts-table input,
+.zati-parts-table input {
+  border: 1px solid #cfd6df;
+  box-shadow: none;
+  outline: none;
+}
+
+.zati-zac-parts-table input:focus,
+.zati-parts-table input:focus {
+  border-color: #2f80ed;
+  box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.12);
+}
+
+/* Plus / Minus buttons: Zojirushi blue */
+.zati-row-add,
+.zati-row-remove,
+.zati-add-row-btn,
+.zati-remove-row-btn,
+.zati-circle-btn {
+  background: #0078b8;
+  color: #fff;
+}
+
+.zati-row-add:hover,
+.zati-row-remove:hover,
+.zati-add-row-btn:hover,
+.zati-remove-row-btn:hover,
+.zati-circle-btn:hover {
+  background: #005f91;
+}
+
+/* Next button: Zojirushi blue + vertical center */
+.zati-primary-btn,
+.zati-btn--primary {
+  background: #0078b8;
+  border-color: #0078b8;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.zati-primary-btn:hover,
+.zati-btn--primary:hover {
+  background: #005f91;
+  border-color: #005f91;
+}
+
+/* =========================
+   Warranty Claim UI Fix v1.1
+========================= */
+
+/* Lookup / Clear - text link */
+.zati-zac-parts-table .zati-link-btn,
+.zati-zac-parts-table .zati-text-action,
+.zati-zac-parts-table .zati-part-link {
+  background: transparent !important;
+  border: none !important;
+  color: #0078b8 !important;
+  text-decoration: underline !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 0 4px !important;
+  min-width: auto !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+}
+
+.zati-zac-parts-table .zati-link-btn:hover,
+.zati-zac-parts-table .zati-text-action:hover,
+.zati-zac-parts-table .zati-part-link:hover {
+  color: #005f91 !important;
+}
+
+/* Parts table input border */
+.zati-zac-parts-table input {
+  border: 1px solid #cfd6df !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.zati-zac-parts-table input:focus {
+  border-color: #2f80ed !important;
+  box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.14) !important;
+}
+
+/* Plus / Minus buttons */
+.zati-zac-parts-table .zati-row-add,
+.zati-zac-parts-table .zati-row-remove,
+.zati-add-row-btn,
+.zati-remove-row-btn,
+.zati-circle-btn {
+    width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background: #0078b8 !important;
+  color: #fff !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-size: 11px !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+  cursor: pointer;}
+
+.zati-zac-parts-table .zati-row-add:hover,
+.zati-zac-parts-table .zati-row-remove:hover,
+.zati-add-row-btn:hover,
+.zati-remove-row-btn:hover,
+.zati-circle-btn:hover {
+  background: #005f91 !important;
+}
+
+/* NEXT button */
+.zati-form-actions .zati-primary-btn,
+.zati-form-actions .zati-btn--primary,
+button.zati-primary-btn,
+button.zati-btn--primary {
+  background: #0078b8 !important;
+  border: 1px solid #0078b8 !important;
+  color: #fff !important;
+  min-width: 140px !important;
+  height: 42px !important;
+  padding: 0 24px !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  box-shadow: none !important;
+  text-decoration: none;
+}
+
+.zati-form-actions .zati-primary-btn:hover,
+.zati-form-actions .zati-btn--primary:hover,
+button.zati-primary-btn:hover,
+button.zati-btn--primary:hover {
+  background: #005f91 !important;
+  border-color: #005f91 !important;
+}
+
+/* ==================================================
+   12. Parts Order
+================================================== */
+
+.zati-address-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.zati-address-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: var(--zati-color-label);
+  cursor: pointer;
+}
+
+.zati-address-option input[type="radio"],
+.zati-address-save-option input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.zati-address-save-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--zati-color-text-muted);
+}
+
+.zati-address-panel {
+  padding: 18px 20px;
+  border: 1px solid var(--zati-color-border);
+  background: var(--zati-color-surface-soft);
+}
+
+.zati-address-panel.is-disabled {
+  opacity: 0.7;
+}
+
+.zati-address-panel.is-disabled input,
+.zati-address-panel.is-disabled select {
+  background: var(--zati-color-readonly-bg);
+}
+
+/* =========================
+Parts Order - Same as Sold To checkbox 
+=========================*/
+.same-as-sold-to {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.same-as-sold-to input[type="checkbox"] {
+    width: 14px !important;
+    height: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* =========================
+   Parts Order add
+========================= */
+
+.zati-address-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-bottom: 20px;
+}
+
+.zati-address-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.zati-address-option input[type="radio"] {
+    margin: 0;
+}
+
+.zati-address-panel {
+    padding: 20px;
+    border: 1px solid #d9dee5;
+    border-radius: 6px;
+    background: #f8fafc;
+}
+
+.zati-address-display {
+    line-height: 1.7;
+}
+
+.zati-address-save-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+.zati-address-save-option input[type="checkbox"] {
+    margin-top: 4px;
+}
+
+.zati-part-lookup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zati-part-lookup input {
+    flex: 1;
+    min-width: 130px;
+}
+
+.zati-total-box {
+    width: 100%;
+    max-width: 420px;
+    margin-left: auto;
+}
+
+.zati-total-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 12px 0;
+    border-bottom: 1px solid #d9dee5;
+}
+
+.zati-grand-total {
+    font-size: 1.1rem;
+    border-bottom: 0;
+}
+/* Parts Order compact layout */
+
+.zati-parts-order-meta-row {
+  display: grid;
+  grid-template-columns: 320px 180px;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.zati-address-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.zati-address-column {
+  min-width: 0;
+}
+
+.zati-address-column .zati-section-title {
+  margin-top: 0;
+}
+
+.zati-address-column .zati-address-panel {
+  min-height: 128px;
+  box-sizing: border-box;
+}
+
+.zati-address-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+
+.zati-address-edit-grid .zati-field--full {
+  grid-column: 1 / -1;
+}
+
+.zati-parts-order-note {
+  width: 100%;
+  max-width: none;
+  margin-top: 16px;
+}
+
+.zati-parts-order-shipping-row {
+  display: grid;
+  grid-template-columns:
+    250px
+    150px
+    180px
+    minmax(280px, 1fr);
+  gap: 22px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+/* Ensure address panels are hidden correctly */
+
+.zati-address-compare-grid[hidden],
+#registered-addresses-panel[hidden],
+#different-addresses-panel[hidden],
+#registered-ship-address-display[hidden],
+#registered-sold-address-copy[hidden] {
+  display: none !important;
+}
+
+/* Individual Sold To / Ship To controls */
+
+.zati-address-control-area {
+  min-height: 58px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 7px;
+}
+
+.zati-address-control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+
+.zati-address-column > .zati-address-panel {
+  min-height: 124px;
+  box-sizing: border-box;
+}
+
+.zati-address-column-title {
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.zati-address-option,
+.zati-same-address-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.zati-address-option input,
+.zati-same-address-option input {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+#different-sold-to-panel,
+#different-ship-to-panel {
+  min-height: 0;
+}
+
+#registered-sold-to-panel[hidden],
+#different-sold-to-panel[hidden],
+#registered-ship-to-panel[hidden],
+#different-ship-to-panel[hidden],
+#sold-to-copy-panel[hidden] {
+  display: none !important;
+}
+
+/* Fix radio / checkbox vertical alignment */
+
+.zati-address-option,
+.zati-same-address-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  line-height: 1.2;
+}
+
+.zati-address-option input[type="radio"],
+.zati-same-address-option input[type="checkbox"] {
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 14px;
+  vertical-align: middle;
+}
+
+.zati-address-option span,
+.zati-same-address-option span {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.zati-address-control-area {
+  min-height: 52px;
+}
+
+.zati-address-control-area > .zati-address-option,
+.zati-address-control-row {
+  margin-bottom: 4px;
+}
+
+.zati-address-control-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+/* Custom Zojirushi radio buttons */
+
+.zati-address-option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  flex: 0 0 14px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 1.5px solid #4b5563;
+  border-radius: 50%;
+  background: #fff;
+
+  display: inline-grid;
+  place-content: center;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.zati-address-option input[type="radio"]::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0078bd;
+  transform: scale(0);
+  transition: transform 0.12s ease-in-out;
+}
+
+.zati-address-option input[type="radio"]:checked {
+  border-color: #0078bd;
+}
+
+.zati-address-option input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.zati-address-option input[type="radio"]:focus-visible {
+  outline: 2px solid rgba(0, 120, 189, 0.25);
+  outline-offset: 2px;
+}
+
+.zati-address-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  line-height: 1;
+}
+
+.zati-address-option span {
+  line-height: 1.2;
+}
+
+/* Address controls alignment */
+
+.zati-address-control-area {
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.zati-address-control-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.zati-same-address-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  line-height: 1;
+}
+
+.zati-address-column > .zati-address-panel {
+  min-height: 124px;
+  box-sizing: border-box;
+}
+
+/* Final custom radio reset */
+
+.zati-address-option input[type="radio"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+
+  position: relative !important;
+  display: inline-block !important;
+
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 1.5px solid #6b7280 !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+
+  box-shadow: none !important;
+  outline: none;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.zati-address-option input[type="radio"]::before {
+  content: "" !important;
+
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+
+  width: 7px !important;
+  height: 7px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+  background: #0078bd !important;
+
+  transform: translate(-50%, -50%) scale(0) !important;
+  transition: transform 0.12s ease;
+}
+
+.zati-address-option input[type="radio"]:checked {
+  border-color: #0078bd !important;
+  background: #fff !important;
+}
+
+.zati-address-option input[type="radio"]:checked::before {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+.zati-address-option input[type="radio"]::after {
+  content: none !important;
+  display: none !important;
+}
+.zati-address-option {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px;
+  line-height: 1.2;
+}
+
+.zati-address-option span {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.zati-parts-order-total-row {
+  display: flex;
+  margin-top: 16px;
+}
+
+.zati-parts-order-total-row .zati-total-field {
+  width: 180px;
+}
+
+.zati-parts-order-total-row input {
+  text-align: right;
+  font-weight: 700;
+}
+
+.zati-order-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.zati-order-status[data-status="submitted"] {
+    background: #eef2f6;
+    color: #48515c;
+}
+
+.zati-order-status[data-status="processing"] {
+    background: #e7f3fb;
+    color: #006ba6;
+}
+
+.zati-order-status[data-status="completed"] {
+    background: #e9f5ec;
+    color: #267a3e;
+}
+
+.zati-order-status[data-status="cancelled"] {
+    background: #fbeaea;
+    color: #a32a2a;
+}
+
+.zati-order-status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #cfd8e3;
+    border-radius: 14px;
+    background: #f3f6f9;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.zati-form-errors {
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    border: 1px solid #d93025;
+    background: #fdecea;
+    color: #b3261e;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.zati-processing-status {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.zati-processing-status-confirmed {
+    background: #e8f5e9;
+    color: #237a35;
+}
+
+.zati-processing-status-backordered {
+    background: #fff4d6;
+    color: #8a6200;
+}
+
+.zati-processing-status-unavailable {
+    background: #fdecea;
+    color: #b3261e;
+}
+
+.zati-processing-status-partial---backordered {
+    background: #fff4d6;
+    color: #8a6200;
+}
+
+/* =========================
+   SVC Order Processing Status
+========================= */
+
+.zati-svc-status-table thead th {
+    background: #eef2f5;
+    font-weight: 700;
+}
+
+/* Part No. */
+.zati-svc-status-table th:nth-child(1),
+.zati-svc-status-table td:nth-child(1) {
+    width: 30%;
+}
+
+/* Ordered */
+.zati-svc-status-table th:nth-child(2),
+.zati-svc-status-table td:nth-child(2) {
+    width: 8%;
+}
+
+/* Confirmed */
+.zati-svc-status-table th:nth-child(3),
+.zati-svc-status-table td:nth-child(3) {
+    width: 8%;
+}
+
+/* Backorder */
+.zati-svc-status-table th:nth-child(4),
+.zati-svc-status-table td:nth-child(4) {
+    width: 8%;
+}
+
+/* Unavailable */
+.zati-svc-status-table th:nth-child(5),
+.zati-svc-status-table td:nth-child(5) {
+    width: 8%;
+}
+
+/* Status */
+.zati-svc-status-table th:nth-child(6),
+.zati-svc-status-table td:nth-child(6) {
+    width: 10%;
+}
+
+/* TS Note */
+.zati-svc-status-table th:nth-child(7),
+.zati-svc-status-table td:nth-child(7) {
+    width: 30%;
+}
+
+.zati-svc-status-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* Part No. */
+.zati-svc-status-table th:nth-child(1),
+.zati-svc-status-table td:nth-child(1) {
+    width: 40%;
+}
+
+/* Ordered */
+.zati-svc-status-table th:nth-child(2),
+.zati-svc-status-table td:nth-child(2) {
+    width: 8%;
+}
+
+/* Confirmed */
+.zati-svc-status-table th:nth-child(3),
+.zati-svc-status-table td:nth-child(3) {
+    width: 8%;
+}
+
+/* Backorder */
+.zati-svc-status-table th:nth-child(4),
+.zati-svc-status-table td:nth-child(4) {
+    width: 8%;
+}
+
+/* Unavailable */
+.zati-svc-status-table th:nth-child(5),
+.zati-svc-status-table td:nth-child(5) {
+    width: 8%;
+}
+
+/* Status */
+.zati-svc-status-table th:nth-child(6),
+.zati-svc-status-table td:nth-child(6) {
+    width: 8%;
+}
+
+/* TS Note */
+.zati-svc-status-table th:nth-child(7),
+.zati-svc-status-table td:nth-child(7) {
+    width: 20%;
+}
+
+/* ========================================
+   Parts Order - Same as Sold To
+   ======================================== */
+
+.zati-same-address-option {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    line-height: 1 !important;
+    cursor: pointer;
+}
+
+.zati-same-address-option input[type="checkbox"] {
+    appearance: auto !important;
+    -webkit-appearance: checkbox !important;
+
+    display: inline-block !important;
+    position: static !important;
+
+    width: 13px !important;
+    height: 13px !important;
+    min-width: 13px !important;
+    max-width: 13px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex: 0 0 13px !important;
+
+    transform: none !important;
+    vertical-align: middle !important;
+}
+
+.zati-same-address-option span {
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+}
+.zati-same-address-option {
+    margin-left: 0 !important;
+}
+
+/* ========================================
+   Parts Order Archive
+   ======================================== */
+
+.zati-form-wrap {
+    background: transparent;
+}
+
+.zati-archive-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.zati-archive-header .zati-form-title {
+    margin: 0 0 6px;
+}
+
+.zati-form-subtitle {
+    margin: 0;
+    color: #667085;
+    font-size: 14px;
+}
+
+.zati-archive-header .zati-primary-btn {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.zati-archive-toolbar {
+    margin-bottom: 10px;
+}
+
+.zati-archive-count {
+    margin: 0;
+}
+
+.zati-order-info-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.zati-order-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.zati-order-info-table th,
+.zati-order-info-table td {
+    border: 1px solid #cfd6df;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.zati-order-info-table th {
+    background: #eef3f7;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.zati-order-info-table td {
+    background: #fff;
+    font-size: 14px;
+}
+
+.zati-shipping-title {
+    margin-top: 22px;
+}
+
+/* Parts Order Detail - Sold To / Ship To */
+
+.zati-review-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.zati-address-card {
+    background: #fff;
+    border: 1px solid #cfd6df;
+    padding: 12px 14px;
+    min-height: 110px;
+    line-height: 1.5;
+}
+
+.zati-ts-processing + .zati-form-actions {
+    margin-top: 20px;
+}
+
+.zati-detail-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.zati-detail-actions .zati-primary-btn,
+.zati-detail-actions .zati-secondary-btn {
+    min-width: 160px;
+    min-height: 42px;
+}
+
+/* =========================
+   Parts Order - TS Processing
+========================= */
+
+.zati-ts-parts-table th,
+.zati-ts-parts-table td {
+    padding: 9px 10px;
+    vertical-align: middle;
+}
+
+/* Confirmed / Backorder */
+.zati-ts-parts-table input[type="number"] {
+    width: 64px !important;
+    height: 30px;
+    min-height: 30px;
+    padding: 5px 8px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 2px solid #0078bd;
+    border-radius: 2px;
+}
+
+/* Status */
+.zati-ts-parts-table select {
+    width: 125px;
+    height: 34px;
+    min-height: 34px;
+    padding: 4px 28px 4px 8px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* TS Note */
+.zati-ts-parts-table textarea {
+    width: 100%;
+    min-height: 34px;
+    height: 34px;
+    padding: 6px 8px;
+    margin: 0;
+    box-sizing: border-box;
+    resize: vertical;
+    line-height: 1.3;
+}
+
+.zati-ts-parts-table th:nth-child(1) {
+    width: 13%;
+}
+
+.zati-ts-parts-table th:nth-child(2) {
+    width: 10%;
+}
+
+.zati-ts-parts-table th:nth-child(3),
+.zati-ts-parts-table th:nth-child(4) {
+    width: 14%;
+}
+
+.zati-ts-parts-table th:nth-child(5) {
+    width: 20%;
+}
+
+.zati-ts-parts-table th:nth-child(6) {
+    width: 29%;
+}
+
+.zati-adjusted-order {
+    margin-top: 32px;
+}
+
+.zati-adjusted-order-note {
+    margin: 0 0 16px;
+    color: #666;
+    font-size: 13px;
+}
+
+.zati-adjusted-subtitle {
+    margin: 24px 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Original Parts Ordered */
+.zati-original-order .zati-archive-table th {
+    background: #eef3f7;
+}
+
+/* Shipping Order */
+.zati-adjusted-order .zati-archive-table th {
+    background: #fffbe8;
+}
+
+.zati-adjusted-order {
+    border-top: 3px solid #ffe002;
+    padding-top: 14px;
+}
+
+/* Backordered */
+.zati-backorder-table th {
+    background: #fff4df !important;
+}
+
+/* Unavailable */
+.zati-unavailable-table th {
+    background: #f8e8e8 !important;
+}
+
+.zati-adjusted-order {
+    margin-top: 28px;
+    margin-bottom: 32px;
+    padding: 18px;
+    background: #fffcf6;
+    border: 1px solid #ead9a8;
+}
+
+.zati-adjusted-order .zati-section-title {
+    margin-top: 0;
+}
+
+.zati-adjusted-order .zati-archive-table th {
+    background: #ffe8a2;
+}
+
+/* ==================================================
+  Back Order
+================================================== */
+
+
+.zati-backorder-header {
+    margin-bottom: 28px;
+}
+
+.zati-backorder-header h1 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.zati-backorder-header p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.zati-archive-page {
+    background: #fff;
+}
+
+.zati-archive-wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px 70px;
+}
+
+.zati-subnav {
+    display: flex;
+}
+
+.zati-subnav-item {
+    display: inline-block;
+    padding: 10px 14px;
+    text-decoration: none;
+    border-right: 1px solid #d7dee5;
+}
+
+.zati-backorder-part-summary {
+    margin-bottom: 28px;
+}
+
+.zati-backorder-part-summary h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.zati-backorder-part-summary {
+    margin-bottom: 28px;
+}
+
+.zati-backorder-part-summary h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* ==================================================
+  Back order History
+================================================== */
+
+
+
+.zati-backorder-history-header {
+    margin-bottom: 28px;
+}
+
+.zati-backorder-history-header h1 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.zati-backorder-history-header p {
+    margin: 0;
+}
+
+.zati-backorder-history-filter {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #f5f7f9;
+    border: 1px solid #d7dee5;
+}
+
+.zati-backorder-history-filter label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.zati-backorder-history-filter select,
+.zati-backorder-history-filter input {
+    min-height: 42px;
+}
+
+.zati-backorder-history-filter button {
+    min-height: 42px;
+    padding: 0 28px;
+}
+
+.zati-backorder-history-summary {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.zati-backorder-history-summary > div {
+    padding: 18px;
+    border: 1px solid #d7dee5;
+    background: #fff;
+}
+
+.zati-backorder-history-summary span {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.zati-backorder-history-summary strong {
+    font-size: 22px;
+}
+
+
+.zati-archive-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 0 18px;
+
+    background: #0b84c6;
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    border: 0;
+    border-radius: 4px;
+}
+
+.zati-archive-action-btn:hover,
+.zati-archive-action-btn:focus {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.zati-archive-action-btn + .zati-archive-action-btn {
+    margin-left: 8px;
+}
+
+
+/* =========================
+   Archive / Backorder Filters
+   Shared Action Layout
+========================= */
+
+.zati-filter-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.zati-filter-row .zati-archive-filter-field {
+    flex: 0 0 auto;
+}
+
+.zati-filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+}
+
+.zati-filter-actions .zati-archive-filter-btn,
+.zati-filter-actions .zati-archive-action-btn {
+    min-height: 42px;
+    white-space: nowrap;
+}
+
+/* Open Backorders filter widths */
+.page-open-backorders .zati-filter-row {
+    align-items: flex-end;
+}
+
+.page-open-backorders .zati-filter-row .zati-archive-filter-field:first-child {
+    width: 260px;
+}
+
+.page-open-backorders .zati-filter-row .zati-archive-filter-field:nth-child(2) {
+    width: 220px;
+}
+
+.page-open-backorders .zati-filter-row select,
+.page-open-backorders .zati-filter-row input {
+    width: 100%;
+}
+
+.page-open-backorders .zati-filter-actions {
+    margin-left: 0;
+}
+
+
+.zati-open-backorders-filter .zati-filter-row {
+    align-items: flex-end;
+}
+
+.zati-open-backorders-filter .zati-archive-filter-field:first-child {
+    width: 260px;
+}
+
+.zati-open-backorders-filter .zati-archive-filter-field:nth-child(2) {
+    width: 220px;
+}
+
+.zati-open-backorders-filter select,
+.zati-open-backorders-filter input {
+    width: 100%;
+}
+
+/* =========================
+   Backorder Filter Layout
+========================= */
+
+.zati-open-backorders-filter {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #f5f7f9;
+    border: 1px solid #d7dee5;
+}
+
+.zati-open-backorders-filter .zati-filter-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.zati-open-backorders-filter .zati-archive-filter-field {
+    flex: 0 0 auto;
+}
+
+.zati-open-backorders-filter .zati-archive-filter-field:first-child {
+    width: 260px;
+}
+
+.zati-open-backorders-filter .zati-archive-filter-field:nth-child(2) {
+    width: 220px;
+}
+
+.zati-open-backorders-filter select,
+.zati-open-backorders-filter input {
+    width: 100%;
+    min-height: 42px;
+}
+
+.zati-open-backorders-filter label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.zati-open-backorders-filter .zati-filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+}
+
+.zati-open-backorders-filter select,
+.zati-open-backorders-filter input {
+    width: 100%;
+    min-height: 42px;
+
+    border: 1px solid #cfd8e3;
+    background: #fff;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Backorder Release
+========================= */
+
+.zati-backorder-release-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zati-backorder-release-form input[type="number"] {
+    width: 64px;
+    height: 38px;
+    min-height: 38px;
+    padding: 0 8px;
+
+    border: 1px solid #cfd8e3;
+    background: #fff;
+
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.zati-backorder-release-form button {
+    height: 38px;
+    min-height: 38px;
+    padding: 0 18px;
+
+    border: 0;
+    border-radius: 2px;
+
+    background: #0b84c6;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.zati-backorder-release-form button:hover,
+.zati-backorder-release-form button:focus {
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* ==================================================
+  Error page
+================================================== */
+
+
+.zati-error-box {
+  grid-column: 1 / -1;
+  background: #ffad9f;
+  color: #b00000;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.zati-field-error {
+  margin-top: 5px;
+  color: #d93025;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.zati-input-error {
+    border: 1px solid #d93025 !important;
+}
+
+.zati-part-error {
+  margin-top: 6px;
+  padding: 7px 10px;
+  background: #f2483d;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.zati-part-error:empty {
+  display: none;
+}
+
+.zati-part-number.zati-input-error {
+  border-color: #d93025 !important;
+  background: #fff5f5 !important;
+}
+
+/* Review pages: remove outer page background */
+
+body:has(main.zati-review-page) {
+    background: #fff !important;
+}
+
+main.zati-review-page {
+    background: #fff !important;
+}
+
+.zati-ts-processing {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid #087cc1;
+}
+
+.zati-ts-processing h2 {
+    margin-top: 0;
+}
+
+.zati-table-wrap {
+    overflow-x: auto;
+}
+
+.zati-ts-parts-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.zati-ts-parts-table th,
+.zati-ts-parts-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.zati-ts-parts-table input[type="number"] {
+    width: 80px;
+}
+
+.zati-ts-parts-table select {
+    min-width: 130px;
+}
+
+.zati-ts-parts-table textarea {
+    width: 100%;
+    min-width: 180px;
+}
+
+/* ==================================================
+Warranty Monthly Summary
+================================================== */
+.zati-archive-monthly-summary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 4px;
+    background: #1f5f99;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.zati-archive-monthly-summary-btn:hover {
+    opacity: 0.88;
+    color: #fff;
+}
+
+.zati-archive-monthly-summary-btn.is-disabled {
+    background: #b8c0c8;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.zati-archive-monthly-summary-btn {
+    margin-left: auto;
+}
+
+.zati-archive-monthly-summary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    white-space: nowrap;
+    width: auto;
+}
+
+/* ==================================================
+    Responsive
+================================================== */
+
+@media (max-width: 1024px) {
+  .zati-form-grid,
+  .zati-form-row-2,
+  .zati-form-row-3,
+  .zati-form-row-4,
+  .zati-form-row-claim,
+  .zati-total-grid,
+  .zati-review-columns,
+  .zati-review-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .zati-claim-summary {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .zati-form-page {
+    padding: 16px;
+  }
+
+  .zati-form-wrap {
+    padding: 0;
+  }
+
+  .zati-form-grid,
+  .zati-form-row-2,
+  .zati-form-row-3,
+  .zati-form-row-4,
+  .zati-form-row-claim,
+  .zati-pair-row,
+  .zati-two-field-row,
+  .zati-shipping-row,
+  .zati-shipping-grid,
+  .zati-total-grid,
+  .zati-review-header,
+  .zati-review-columns,
+  .zati-review-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .zati-field-wide,
+  .zati-field--wide {
+    grid-column: span 1;
+  }
+
+  .zati-parts-section,
+  .zati-table-section {
+    overflow-x: auto;
+  }
+
+  .zati-table,
+  .zati-parts-table,
+  .zati-zac-parts-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 767px) {
+    .zati-complete-page {
+        padding: 40px 20px 80px;
+    }
+
+    .zati-complete-actions {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+
+    .zati-complete-actions a {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+  .zati-complete-wrap {
+    width: 100%;
+    min-height: auto;
+    padding: 42px 20px 72px;
+  }
+
+  .zati-complete-wrap h1 {
+    margin-bottom: 28px !important;
+    font-size: 24px !important;
+  }
+
+  .zati-complete-message {
+    gap: 14px;
+  }
+
+  .zati-complete-message h2 {
+    margin-bottom: 14px !important;
+    font-size: 16px !important;
+  }
+
+  .zati-complete-details p {
+    font-size: 15px;
+  }
+
+  .zati-complete-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 64px;
+  }
+
+  .zati-complete-actions .zati-primary-btn,
+  .zati-complete-actions .zati-secondary-btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  body.page-template-page-warranty-claim-complete .zati-subnav,
+  body.zati-warranty-complete-body .zati-subnav {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Archive page */
+@media screen and (max-width: 1024px) {
+  .zati-archive-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .zati-archive-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .zati-archive-wrap {
+    width: 100%;
+    padding: 42px 20px 72px;
+  }
+
+  .zati-archive-header {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 28px;
+  }
+
+  .zati-archive-header h1 {
+    font-size: 24px !important;
+  }
+
+  .zati-archive-new-btn {
+    width: 100%;
+  }
+
+  .zati-archive-filters {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .zati-archive-filter-btn,
+  .zati-archive-csv-btn {
+    width: 100%;
+  }
+}
+@media (max-width: 1100px) {
+    .zati-archive-filters.is-ts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .zati-archive-filters.is-ts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .zati-archive-filters:not(.is-ts) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .zati-archive-filters:not(.is-ts) {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 767px) {
+
+    .zati-address-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .zati-part-lookup {
+        min-width: 220px;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+  .zati-address-compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .zati-parts-order-meta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .zati-address-edit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zati-address-edit-grid .zati-field--full {
+    grid-column: auto;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .zati-parts-order-shipping-row {
+    grid-template-columns: 1fr;
+  }
+
+}
+
