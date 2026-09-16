@@ -3170,6 +3170,30 @@ button.zati-primary-btn {
     }
 
     /* Technical Information */
+
+    /* Product No. */
+
+    .search-results {
+    padding: 30px 20px 0 !important;
+  
+    }   
+    .zati-used-models-table th:nth-child(1),
+    .zati-used-models-table td:nth-child(1) {
+        width: 8%;
+    }
+
+    /* Category */
+    .zati-used-models-table th:nth-child(2),
+    .zati-used-models-table td:nth-child(2) {
+        width: 10%;
+    }
+
+    /* Subcategory */
+    .zati-used-models-table th:nth-child(3),
+    .zati-used-models-table td:nth-child(3) {
+        width: 10%;
+    }
+
     .zati-used-models-table th:nth-child(8),
     .zati-used-models-table td:nth-child(8) {
         width: 6%;
