@@ -1,11 +1,459 @@
-/* =========================
-   ZATI Responsive
-========================= */
+/* =========================================
+   ZATI Responsive Styles
+========================================= */
 
-.zati-form-page {
-  background: #fff8e6;
-  min-height: calc(100vh - 120px);
-  padding: 36px 0 56px;
-  font-family: Arial, "Helvetica Neue", sans-serif;
-  color: #333;
+
+/* =========================================
+   Large Laptop / Small Desktop
+   1367px - 1400px
+========================================= */
+
+@media (min-width: 1367px) and (max-width: 1400px) {
+
+    .zati-used-models-table th,
+    .zati-used-models-table td {
+        padding: 8px 8px;
+    }
+
+    .zati-used-models-table .zati-result-btn {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
 }
+
+
+/* =========================================
+   Laptop
+   769px - 1366px
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1366px) {
+
+    .zati-used-models-table th,
+    .zati-used-models-table td {
+        padding: 7px 6px;
+        font-size: 12px;
+    }
+
+    .zati-used-models-table .zati-result-btn {
+        padding: 6px 7px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .search-results {
+        padding: 30px 20px 0 !important;
+    }
+
+    /* Product No. */
+    .zati-used-models-table th:nth-child(1),
+    .zati-used-models-table td:nth-child(1) {
+        width: 8%;
+    }
+
+    /* Category */
+    .zati-used-models-table th:nth-child(2),
+    .zati-used-models-table td:nth-child(2) {
+        width: 10%;
+    }
+
+    /* Subcategory */
+    .zati-used-models-table th:nth-child(3),
+    .zati-used-models-table td:nth-child(3) {
+        width: 10%;
+    }
+
+    /* Technical Information */
+    .zati-used-models-table th:nth-child(8),
+    .zati-used-models-table td:nth-child(8) {
+        width: 6%;
+    }
+
+    /* Model Detail split */
+    body.single-model_alias .split-container {
+        --left-width: 45%;
+    }
+
+    body.single-model_alias .parts-table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    /* Select */
+    body.single-model_alias .parts-table th:nth-child(1),
+    body.single-model_alias .parts-table td:nth-child(1) {
+        width: 40px;
+    }
+
+    /* No. */
+    body.single-model_alias .parts-table th:nth-child(2),
+    body.single-model_alias .parts-table td:nth-child(2) {
+        width: 38px;
+    }
+
+    /* Part No. */
+    body.single-model_alias .parts-table th:nth-child(3),
+    body.single-model_alias .parts-table td:nth-child(3) {
+        width: 90px;
+        max-width: 100px;
+        white-space: nowrap;
+    }
+
+    /* JPN Part No. */
+    body.single-model_alias .parts-table th:nth-child(4),
+    body.single-model_alias .parts-table td:nth-child(4) {
+        width: 90px;
+        max-width: 100px;
+        white-space: nowrap;
+    }
+
+    /* Description */
+    body.single-model_alias .parts-table th:nth-child(5),
+    body.single-model_alias .parts-table td:nth-child(5) {
+        width: auto;
+        min-width: 180px;
+    }
+
+    /* Size */
+    body.single-model_alias .parts-table th:nth-child(6),
+    body.single-model_alias .parts-table td:nth-child(6) {
+        width: 48px;
+    }
+
+    /* SVC Price */
+    body.single-model_alias .parts-table th:nth-child(7),
+    body.single-model_alias .parts-table td:nth-child(7) {
+        width: 58px;
+    }
+
+    /* Retail Price */
+    body.single-model_alias .parts-table th:nth-child(8),
+    body.single-model_alias .parts-table td:nth-child(8) {
+        width: 58px;
+    }
+
+    /* Remarks */
+    body.single-model_alias .parts-table th:nth-child(9),
+    body.single-model_alias .parts-table td:nth-child(9) {
+        width: 90px;
+    }
+}
+
+/* =========================================
+   Laptop
+   1025px - 1366px
+========================================= */
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+    /* 昨日作ったLaptop CSS */
+
+}
+/* =========================================
+   Tablet
+   769px - 1024px
+========================================= */
+
+@media (max-width: 1024px) {
+  body.single-model_alias .split-container {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body.single-model_alias .splitter,
+  body.single-model_alias .gutter {
+    display: none !important;
+  }
+
+  body.single-model_alias .left-pane,
+  body.single-model_alias .right-pane {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body.single-model_alias .left-pane {
+    margin-bottom: 16px;
+  }
+
+  .zac-main-panel {
+    padding: 20px;
+    }
+
+  .app-nav a {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    body.single-model_alias {
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    body.single-model_alias .model-detail-container {
+        height: auto !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    body.single-model_alias .split-container {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        overflow: visible !important;
+    }
+
+    body.single-model_alias .left-pane {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        overflow: visible !important;
+    }
+
+    body.single-model_alias .divider {
+        display: none !important;
+    }
+
+    body.single-model_alias .right-pane {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        overflow: visible !important;
+    }
+    body.single-model_alias .parts-table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: #fff;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        position: relative;
+        top: auto;
+    }
+
+    .zati-forms-hub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zati-forms-hub-page {
+        padding: 40px 20px 70px;
+    }
+
+
+    .zati-result-btn,
+    .zati-primary-btn,
+    button,
+    input[type="submit"] {
+        min-height: 44px;
+        padding: 10px 14px;
+    }
+
+    a,
+    button {
+        touch-action: manipulation;
+    }
+    .app-brand-text {
+    font-size: 16px;
+    }
+    .app-logo-img {
+    height: 24px;
+    }
+    .app-nav {
+    gap: 30px;
+    }
+    .zac-sidebar,.search-layout .sidebar {
+    width: 240px !important;
+    }
+
+    td a {
+    font-size: 11px;
+    }
+
+    .desktop-label {
+        display: none;
+    }
+
+    .tablet-label {
+        display: inline;
+    }
+
+    .zati-used-models-table .zati-result-btn {
+        min-width: 90px !important;
+    }
+
+    .zati-form-title, .zati-form-wrap h1 {
+    font-size: 20px;
+    }
+
+    .zati-form-page {
+    padding: 20px;
+    }
+
+    .zati-archive-filters.is-ts {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .zati-archive-filters.is-ts > * {
+        min-width: 0;
+    }
+
+    .zati-archive-filters.is-ts select,
+    .zati-archive-filters.is-ts button,
+    .zati-archive-filters.is-ts a {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .zati-archive-filter-actions {
+        grid-column: 1 / -1;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .zati-archive-filter-actions > * {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+    }
+    .zati-archive-table {
+    min-width: 980px;
+    }
+
+    .zati-archive-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    }
+
+
+
+    /* Backorder History filter */
+    .zati-open-backorders-filter .zati-filter-row {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+        align-items: end;
+    }
+
+    .zati-open-backorders-filter .zati-archive-filter-field {
+        min-width: 0;
+    }
+
+    .zati-open-backorders-filter .zati-filter-actions {
+        grid-column: 1 / -1;
+
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+
+        width: 100%;
+        flex: none;
+    }
+
+    .zati-open-backorders-filter .zati-filter-actions > * {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+
+}
+
+
+/* =========================================
+   Mobile
+   768px and below
+========================================= */
+
+@media (max-width: 768px) {
+
+    .search-layout {
+        flex-direction: column !important;
+        padding: 16px !important;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        position: relative;
+        top: auto;
+    }
+
+    .zati-forms-hub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zati-forms-hub-page {
+        padding: 40px 20px 70px;
+    }
+
+    .zati-news-single {
+        padding: 24px 20px 70px;
+    }
+
+    .zati-news-article-header h1 {
+        font-size: 32px;
+    }
+
+    .zati-news-article-body {
+        font-size: 15px;
+    }
+
+    .zati-news-archive {
+        padding: 24px 20px 60px;
+    }
+
+    .zati-news-list-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .zati-search-portal {
+        padding: 45px 20px 70px;
+    }
+
+    .zati-search-portal-row {
+        flex-direction: column;
+    }
+
+    .zati-search-portal-row .zati-primary-btn {
+        width: 100%;
+    }
+
+    .zati-quick-access-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

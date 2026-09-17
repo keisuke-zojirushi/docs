@@ -3313,6 +3313,26 @@ Parts Order - Same as Sold To checkbox
     white-space: nowrap;
 }
 
+/* =========================
+   Archive Filter Actions
+   Desktop default
+========================= */
+
+.zati-archive-filter-actions {
+    grid-column: span 3;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(145px, 1fr));
+    gap: 12px;
+    align-items: end;
+}
+
+.zati-archive-filter-actions > * {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
 /* Open Backorders filter widths */
 .page-open-backorders .zati-filter-row {
     align-items: flex-end;
@@ -3599,236 +3619,3 @@ Warranty Monthly Summary
     white-space: nowrap;
     width: auto;
 }
-
-/* ==================================================
-    Responsive
-================================================== */
-
-@media (max-width: 1024px) {
-  .zati-form-grid,
-  .zati-form-row-2,
-  .zati-form-row-3,
-  .zati-form-row-4,
-  .zati-form-row-claim,
-  .zati-total-grid,
-  .zati-review-columns,
-  .zati-review-layout {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .zati-claim-summary {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 720px) {
-  .zati-form-page {
-    padding: 16px;
-  }
-
-  .zati-form-wrap {
-    padding: 0;
-  }
-
-  .zati-form-grid,
-  .zati-form-row-2,
-  .zati-form-row-3,
-  .zati-form-row-4,
-  .zati-form-row-claim,
-  .zati-pair-row,
-  .zati-two-field-row,
-  .zati-shipping-row,
-  .zati-shipping-grid,
-  .zati-total-grid,
-  .zati-review-header,
-  .zati-review-columns,
-  .zati-review-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .zati-field-wide,
-  .zati-field--wide {
-    grid-column: span 1;
-  }
-
-  .zati-parts-section,
-  .zati-table-section {
-    overflow-x: auto;
-  }
-
-  .zati-table,
-  .zati-parts-table,
-  .zati-zac-parts-table {
-    min-width: 900px;
-  }
-}
-
-@media (max-width: 767px) {
-    .zati-complete-page {
-        padding: 40px 20px 80px;
-    }
-
-    .zati-complete-actions {
-        flex-direction: column;
-        margin-top: 60px;
-    }
-
-    .zati-complete-actions a {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 767px) {
-  .zati-complete-wrap {
-    width: 100%;
-    min-height: auto;
-    padding: 42px 20px 72px;
-  }
-
-  .zati-complete-wrap h1 {
-    margin-bottom: 28px !important;
-    font-size: 24px !important;
-  }
-
-  .zati-complete-message {
-    gap: 14px;
-  }
-
-  .zati-complete-message h2 {
-    margin-bottom: 14px !important;
-    font-size: 16px !important;
-  }
-
-  .zati-complete-details p {
-    font-size: 15px;
-  }
-
-  .zati-complete-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    margin-top: 64px;
-  }
-
-  .zati-complete-actions .zati-primary-btn,
-  .zati-complete-actions .zati-secondary-btn {
-    width: 100%;
-    min-width: 0;
-  }
-
-  body.page-template-page-warranty-claim-complete .zati-subnav,
-  body.zati-warranty-complete-body .zati-subnav {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
-
-/* Archive page */
-@media screen and (max-width: 1024px) {
-  .zati-archive-filters {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .zati-archive-summary {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .zati-archive-wrap {
-    width: 100%;
-    padding: 42px 20px 72px;
-  }
-
-  .zati-archive-header {
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: 28px;
-  }
-
-  .zati-archive-header h1 {
-    font-size: 24px !important;
-  }
-
-  .zati-archive-new-btn {
-    width: 100%;
-  }
-
-  .zati-archive-filters {
-    grid-template-columns: 1fr;
-    padding: 16px;
-  }
-
-  .zati-archive-filter-btn,
-  .zati-archive-csv-btn {
-    width: 100%;
-  }
-}
-@media (max-width: 1100px) {
-    .zati-archive-filters.is-ts {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 650px) {
-    .zati-archive-filters.is-ts {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 900px) {
-    .zati-archive-filters:not(.is-ts) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    .zati-archive-filters:not(.is-ts) {
-        grid-template-columns: 1fr;
-    }
-}
-@media (max-width: 767px) {
-
-    .zati-address-options {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .zati-part-lookup {
-        min-width: 220px;
-    }
-
-}
-
-@media (max-width: 900px) {
-
-  .zati-address-compare-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-@media (max-width: 720px) {
-
-  .zati-parts-order-meta-row {
-    grid-template-columns: 1fr;
-  }
-
-  .zati-address-edit-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .zati-address-edit-grid .zati-field--full {
-    grid-column: auto;
-  }
-
-}
-
-@media (max-width: 720px) {
-
-  .zati-parts-order-shipping-row {
-    grid-template-columns: 1fr;
-  }
-
-}
-
